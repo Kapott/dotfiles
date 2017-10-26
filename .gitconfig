@@ -1,6 +1,6 @@
 [user]
-  name =
-  email =
+  name = kapott
+  email = kapott@aivd.33mail.com
 
 [push]
   default = simple
@@ -8,6 +8,7 @@
 [core]
   editor = vim
   whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
+  askpass = /usr/bin/ksshaskpass
 
 [color]
   ui = true
