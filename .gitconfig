@@ -15,7 +15,7 @@
 
 [color "branch"]
   current = yellow reverse
-  local = yello
+  local = yellow
   remote = green
 
 [color "diff"]
@@ -36,8 +36,8 @@
   d = diff
   f = fetch
   m = merge
-  p = push
-  s = status
+  p = pull
+  st = status
   u = reset HEAD --
   co = checkout
   sl = stash list
