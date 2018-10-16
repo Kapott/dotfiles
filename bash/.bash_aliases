@@ -17,6 +17,7 @@ alias p="cd ~/projects"
 alias r="ranger"
 alias sv="sudo vim"
 alias sr="sudo ranger"
+alias t="tmux a || tmux" # Open tmux, or attach to disconnected sess
 alias upg="sudo dnf upgrade -y" # upgrade system
 alias v="vim"
 alias week="date +%V" # get weeknumber
