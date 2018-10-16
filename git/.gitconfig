@@ -8,7 +8,9 @@
 [core]
   editor = vim
   whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
-  askpass = /usr/bin/gnome-keyring
+
+[credential]
+  helper = /usr/libexec/git-core/git-credential-libsecret
 
 [color]
   ui = true
