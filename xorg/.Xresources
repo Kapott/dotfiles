@@ -1,0 +1,53 @@
+! Color scheme
+
+! special
+*.foreground:   #f8f8f2
+*.background:   #272822
+*.cursorColor:  #f8f8f2
+
+! black
+*.color0:       #272822
+*.color8:       #75715e
+
+! red
+*.color1:       #f92672
+*.color9:       #f92672
+
+! green
+*.color2:       #a6e22e
+*.color10:      #a6e22e
+
+! yellow
+*.color3:       #f4bf75
+*.color11:      #f4bf75
+
+! blue
+*.color4:       #66d9ef
+*.color12:      #66d9ef
+
+! magenta
+*.color5:       #ae81ff
+*.color13:      #ae81ff
+
+! cyan
+*.color6:       #a1efe4
+*.color14:      #a1efe4
+
+! white
+*.color7:       #f8f8f2
+*.color15:      #f9f8f5
+
+! URXVT settings
+URxvt*font: xft:DejaVu Sans Mono:style=Book:pixelsize=12
+URxvt*boldFont: xft:DejaVu Sans Mono:style=Bold:pixelsize=12
+URxvt*italicFont: xft:DejaVu Sans Mono:style=Oblique:pixelsize=12
+URxvt*boldItalicFont: xft:DejaVu Sans Mono:style=BoldOblique:pixelsize=12
+URxvt*letterspace: -2
+URxvt*scrollBar: false
+URxvt*depth: 32
+URxvt*transparent: true
+URxvt*shading: 20
+! URxvt*fading: 25
+URxvt*background: #272822
+URxvt*foreground: #f8f8f2
+URxvt*inheritPixmap: true
