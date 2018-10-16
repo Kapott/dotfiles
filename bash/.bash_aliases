@@ -9,17 +9,18 @@ alias -- -="cd -"
 alias d="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
 alias g="git"
-
-# List all files, colorized, long format, no . or ..
-alias l="ls -lAF --color"
-
-# List all directories
-alias lsd="ls -lF --color | grep --color=never '^d'"
-
-# Always color my ls
+alias l="ls -lAF --color" # Full, colorized listing
 alias ls="command ls --color"
+alias lsd="ls -lF --color | grep --color=never '^d'" # List directories only
+alias p="cd ~/projects"
+alias r="ranger"
+alias sv="sudo vim"
+alias sr="sudo ranger"
+alias upg="sudo dnf upgrade -y" # upgrade system
+alias v="vim"
+alias week="date +%V" # get weeknumber
+alias yt="youtube-dl --add-metadata -ic" # Download video link
+alias yta="yt -x -f bestaudio/best" # Download only audio
 
-# Get week number
-alias week="date +%V"
+
