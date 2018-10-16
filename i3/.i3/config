@@ -89,7 +89,7 @@ bindsym $mod+a focus parent
 set $ws1 "1: "
 set $ws2 "2: "
 set $ws3 "3: "
-set $ws4 "4: "
+set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6: "
 set $ws7 "7: "
@@ -158,12 +158,12 @@ bindsym Mod1+r mode "resize"
 
 # i3 colors
 # <class> <border> <background> <text> <indicator> <child_border>
-client.focused 		$white $white $red $white $white
-client.focused_inactive $lgray $lgray $dgray $lgray $lgray
-client.unfocused 	$lgray $lgray $dgray $lgray $lgray
-client.urgent		$red $red $white $red $red
+client.focused  $lgray $lgray $red $lgray $black
+client.focused_inactive $black $black $dgray $black $black
+client.unfocused 	$black $black $lgray $black $black
+client.urgent		$black $black $red $black $black
 client.placeholder	$white $white $white $white $white
-client.background	$white
+client.background	$black
 
 # i3bar config
 bar {
@@ -202,6 +202,7 @@ popup_during_fullscreen smart
 
 # assign programs to workspaces
 assign [class="Firefox"] $ws1
+assign [class="Code"] $ws3
 
 # mod-scroll mouse to toggle window-modes
 bindsym $mod+button4 layout toggle stacking tabbed
