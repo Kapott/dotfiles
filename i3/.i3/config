@@ -6,10 +6,12 @@ set $mod Mod1
 
 # Color scheme
 set $red #c00000
-set $lgray #aeaeae
+set $lgray #75715e
 set $dgray #666666
-set $black #000000
-set $white #eaeaea
+set $black #272822
+set $white #f8f8f2
+set $pink #f92672
+set $green #a6e22e
 
 # Font definition
 font pango:Montserrat 10
@@ -48,7 +50,7 @@ bindsym $mod+Shift+Right move right
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec st
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -158,7 +160,7 @@ bindsym Mod1+r mode "resize"
 
 # i3 colors
 # <class> <border> <background> <text> <indicator> <child_border>
-client.focused  $lgray $lgray $red $lgray $black
+client.focused  $lgray $lgray $white $lgray $black
 client.focused_inactive $black $black $dgray $black $black
 client.unfocused 	$black $black $lgray $black $black
 client.urgent		$black $black $red $black $black
@@ -184,7 +186,7 @@ bar {
     focused_workspace $white $red $white
     active_workspace $white $black $white
     inactive_workspace $white $white $dgray
-    urgent_workspace $red $lgray $dgray
+    urgent_workspace $red $white $dgray
   }
 }
 
