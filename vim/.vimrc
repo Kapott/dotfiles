@@ -22,14 +22,20 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'vim-scripts/todo-txt.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'isRuslan/vim-es6'
 call vundle#end()
 
 "--- Syntax highlighting & color scheme
 filetype plugin indent on
 syntax on
-syntax enable
+"syntax enable
 colorscheme monokai
 set background=dark
+set backspace=indent,eol,start
 
 "--- Text wrapping & line length
 set colorcolumn=101
@@ -43,8 +49,8 @@ set relativenumber
 
 "--- Tab and space settings
 set tabstop=2
-set expandtab
-set softtabstop=2
+"set expandtab
+"set softtabstop=2
 set shiftwidth=2
 
 "--- Error handling
