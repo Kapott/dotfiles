@@ -228,5 +228,8 @@ assign [class="Code"] $ws3
 bindsym $mod+button4 layout toggle stacking tabbed
 bindsym $mod+button5 layout toggle splith splitv
 
+# remap escape and ctrl for vim
+exec xmodmap ~/.Xmodmap
+
 # Execute last 'feh --bg-fill' command which was set..
 exec sh ~/.fehbg
