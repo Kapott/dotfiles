@@ -3,7 +3,6 @@
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias ~="cd ~"
 alias -- -="cd -"
 
 alias d="cd ~/Documents"
