@@ -14,7 +14,7 @@ set $pink #f92672
 set $green #a6e22e
 
 # Font definition
-font pango:Montserrat 10
+font pango:Hack 8
 
 # Set up VIM-like controls
 set $up j
@@ -50,7 +50,7 @@ bindsym $mod+Shift+Right move right
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt256c
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -170,10 +170,10 @@ client.background	$black
 # i3bar config
 bar {
   status_command i3status
-  font pango:Montserrat 10, Awesome 10
+  font pango:Hack 8, Awesome 8
   position top
   modifier $mod
-  separator_symbol "      "
+  separator_symbol " • "
 
   # i3bar mode..(dock,hide,invisible)
   mode dock
@@ -181,7 +181,7 @@ bar {
   colors {
     background $white
     statusline $dgray
-    separator $lgray
+    separator $white
 
     focused_workspace $white $red $white
     active_workspace $white $black $white
