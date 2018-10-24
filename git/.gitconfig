@@ -39,6 +39,7 @@
   f = fetch
   m = merge
   p = pull
+	pu = push
   st = status
   u = reset HEAD --
   co = checkout
