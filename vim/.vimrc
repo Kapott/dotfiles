@@ -106,6 +106,25 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
 
+" Stip trailig whitespace without moving cursor
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" <F5> Strips all trailing whitespaces
+nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+
+" Upon closing these files, auto-remove whitespaces
+autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+
 "--- Split creation, usage & navigation (integrate with tmux!)
 "nnoremap <C-j> <C-w><C-j>
 "nnoremap <C-k> <C-w><C-k>
