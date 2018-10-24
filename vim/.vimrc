@@ -125,6 +125,12 @@ nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 " Upon closing these files, auto-remove whitespaces
 autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
+" Watch my .vimrc (works with all kinds of gui's!) and reload when a change occurs
+augroup myvimrc
+    au!
+    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
 "--- Split creation, usage & navigation (integrate with tmux!)
 "nnoremap <C-j> <C-w><C-j>
 "nnoremap <C-k> <C-w><C-k>
