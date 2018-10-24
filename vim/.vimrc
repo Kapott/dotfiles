@@ -63,7 +63,7 @@ set splitbelow
 set splitright
 
 "--- Legibility & usability
-set list listchars=tab:»·,trail:·
+set list listchars=tab:»·,trail:·,eol:¬
 let mapleader = ","
 let g:mapleader = ","
 set incsearch
@@ -80,6 +80,28 @@ nnoremap tl :tabprev<CR>
 nnoremap tn :tabnew<CR>
 nnoremap tx :tabclose<CR>
 
+"--- Toggle invisible chars (t)oggle (i)nvisible
+nnoremap <Leader>ti :set list!<CR>
+
+"--- Spaces, and tabs and files - oh my!
+" ts = width of tab
+" sw = amount of columns to indent with >> or <<
+" sts = amount of whitespace inserted when tab is pressed to reach tabstop
+" expandtab/noexpandtab = 'expand' tab into spaces, or don't
+"
+if has("autocmd")
+	" enable filetype detection
+	filetype on
+
+	" These filetypes are fussy about tabs vs spaces
+	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+	" This is the housestyle for html/js/css
+	autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab
+	autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
+endif
+
 "--- Split creation, usage & navigation (integrate with tmux!)
 "nnoremap <C-j> <C-w><C-j>
 "nnoremap <C-k> <C-w><C-k>
@@ -91,7 +113,7 @@ map <C-n> ;NERDTreeToggle<CR>
 let g:NERDTreeWinSize=60
 
 "--- Autoclose if NERDTree is the only window left
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType")  && b:NERDTreeType == "primary") | q | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "--- Ctrl-P settings
 let g:ctrlp_map = '<c-p>'
