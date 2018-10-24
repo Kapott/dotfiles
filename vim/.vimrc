@@ -123,7 +123,7 @@ endfunction
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " Upon closing these files, auto-remove whitespaces
-autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 "--- Split creation, usage & navigation (integrate with tmux!)
 "nnoremap <C-j> <C-w><C-j>
@@ -133,7 +133,7 @@ autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 
 "--- Nerdtree specific settings
 map <C-n> ;NERDTreeToggle<CR>
-let g:NERDTreeWinSize=60
+let g:NERDTreeWinSize=40
 
 "--- Autoclose if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -148,5 +148,3 @@ let g:ctrlp_cmd = 'CtrlP'
 " set t_kl=OD
 " set t_kr=OC
 
-"-- Auto remove trailing whitespaces on file write
-autocmd BufWritePre * %s/\s\+$//e
