@@ -38,11 +38,11 @@
 *.color15:      #f9f8f5
 
 ! URXVT settings
-URxvt*font: xft:Hack:style=Book:pixelsize=10
-URxvt*boldFont: xft:Hack Bold:style=Bold:pixelsize=10
-URxvt*italicFont: xft:Hack Italic:style=Oblique:pixelsize=10
-URxvt*boldItalicFont: xft:Hack Bold Italic:style=BoldOblique:pixelsize=10
-URxvt*letterspace: -1
+URxvt*font: xft:Hack:autohint=true:style=Regular:size=12
+URxvt*boldFont: xft:Hack:autohint=true:style=Bold:size=12
+URxvt*italicFont: xft:Hack:autohint=true:style=Italic:size=12
+URxvt*boldItalicFont: xft:Hack:autohint=true:style=Bold Italic:size=12
+URxvt*letterspace: 0
 URxvt*scrollBar: false
 URxvt*depth: 32
 URxvt*transparent: true
