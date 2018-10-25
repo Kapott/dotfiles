@@ -50,7 +50,7 @@ bindsym $mod+Shift+Right move right
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt256c
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
