@@ -1,0 +1,5 @@
+[settings]
+file = ~/sync/mega/todo/todo.txt
+archive = ~/sync/mega/todo/done.txt
+colorscheme = base16-dark
+
