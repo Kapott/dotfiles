@@ -47,10 +47,10 @@ set ai
 set number
 set relativenumber
 
-"--- Tab and space settings
+"--- Tab and space default settings
 set tabstop=2
-"set expandtab
-"set softtabstop=2
+set noexpandtab
+set softtabstop=2
 set shiftwidth=2
 
 "--- Error handling
@@ -130,6 +130,10 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+"--- Git settings (fugitive)
+nnoremap <Leader>gc :Gcommit %
+nnoremap <Leader>gd :Gdiff %
 
 "--- Split creation, usage & navigation (integrate with tmux!)
 "nnoremap <C-j> <C-w><C-j>
