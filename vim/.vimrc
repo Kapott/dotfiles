@@ -48,10 +48,10 @@ set number
 set relativenumber
 
 "--- Tab and space default settings
-set tabstop=2
+set tabstop=4
 set noexpandtab
-set softtabstop=2
-set shiftwidth=2
+set softtabstop=4
+set shiftwidth=4
 
 "--- Error handling
 set vb
@@ -98,25 +98,25 @@ if has("autocmd")
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 	" Customisations based on house-style (arbitrary)
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
+	autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType javascript setlocal ts=4 sts=4 sw=4 noexpandtab
 
-  " Treat .rss files as XML
-  autocmd BufNewFile,BufRead *.rss setfiletype xml
+	" Treat .rss files as XML
+	autocmd BufNewFile,BufRead *.rss setfiletype xml
 endif
 
 " Stip trailig whitespace without moving cursor
 function! <SID>StripTrailingWhitespaces()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
+	" Preparation: save last search, and cursor position.
+	let _s=@/
+	let l = line(".")
+	let c = col(".")
+	" Do the business:
+	%s/\s\+$//e
+	" Clean up: restore previous search history, and cursor position
+	let @/=_s
+	call cursor(l, c)
 endfunction
 
 " <F5> Strips all trailing whitespaces
@@ -127,13 +127,13 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Watch my .vimrc (works with all kinds of gui's!) and reload when a change occurs
 augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+	au!
+	au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
 "--- Git settings (fugitive)
-nnoremap <Leader>gc :Gcommit %
-nnoremap <Leader>gd :Gdiff %
+nnoremap <Leader>gc :Gcommit %<CR>
+nnoremap <Leader>gd :Gdiff %<CR>
 
 "--- Split creation, usage & navigation (integrate with tmux!)
 "nnoremap <C-j> <C-w><C-j>
