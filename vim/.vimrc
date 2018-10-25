@@ -133,7 +133,8 @@ augroup END
 
 "--- Git settings (fugitive)
 nnoremap <Leader>gc :Gcommit %<CR>
-nnoremap <Leader>gd :Gdiff %<CR>
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gst :Gstatus<CR>
 
 "--- Split creation, usage & navigation (integrate with tmux!)
 "nnoremap <C-j> <C-w><C-j>
