@@ -233,3 +233,6 @@ exec xmodmap ~/.Xmodmap
 
 # Execute last 'feh --bg-fill' command which was set..
 exec sh ~/.fehbg
+
+# Use parcellite as clipboard manager
+exec --no-startup-id parcellite
