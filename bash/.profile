@@ -20,6 +20,9 @@ export TERMINAL="st"
 export BROWSER="firefox"
 export READER="zathura"
 
+# set XON/XOFF, so we can use Ctrl-s as the reverse of Ctrl-r in bash
+[[ $- == *i* ]] && stty -ixon
+
 [ -f ~/.bashrc ] && source ~/.bashrc
 
 # Switch escape and caps and use wal colors if tty:
