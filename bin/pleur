@@ -1,0 +1,14 @@
+#!/bin/bash
+# tgz.sh - timestamped tgz, using pigz instead of gzip for multi-threaded awesomeness
+
+# command -v pigz >/dev/null 2>&1 || { echo >&2 "I require pigz but it's not installed.  Aborting."; exit 1; }
+if ! [ -x "$(command -v pigz)" ]; then
+	echo >&2 "I require pigz but it's not installed.  Aborting."
+	exit 1
+fi
+
+dt=$(date --iso-8601)
+threads=$(nproc --all)
+filename="${1}_${dt}.tar.gz"
+echo "Compressing ${@:2} into ${filename}"
+tar cf - ${@:2} | pigz -9 -p "${threads}" > "${filename}"
