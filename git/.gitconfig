@@ -57,3 +57,6 @@
 
 [url "https://bitbucket.org/"]
   insteadOf = bb:
+
+[url "https://gitlab.com"]
+	insteadOf= gl:
