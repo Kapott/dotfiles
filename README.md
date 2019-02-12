@@ -2,9 +2,24 @@
 
 The dotfiles I use on my day-to-day development machines and VM's.
 
-Just clone it anywhere (I use ~/.dotfiles), `cd` into the directory and run `install.sh`.
+Just clone it anywhere (I use ~/.dotfiles), `cd` into the directory and run any of the `make`
+commands listed below. (I used to use GNU Stow to manage my dotfiles, but have since switched to
+abusing `make`, since I want to be even lazier when setting up my machines and `make` allows me to
+do just that.
 
-The installation will use the GNU `stow` command to create symlinks from the git repo to the
-home directory, on provided locations, download the `hack` truetype font from github, and refresh the font cache.
+## dotfiles
 
-Note that some dotfiles/scripts have certain dependencies which I have yet to flesh out; e.g. The `i3` window manager, requires `i3lock` to be available as well.
+`make dotfiles`
+This will symlink (and backup existing, if deemed necessary) dotfiles. Note that this is also the
+one which switches capslock and escape, because I'm all about the vim baby.
+
+`make i3`
+This will symlink the i3 config file and i3status config files.
+
+`make ubuntu`
+`make arch`
+`make debian`
+`make fedora`
+You get the idea.. these will install the packages I want to have on any given dist I use. Since I
+have different dists on different machines, I really don't want to think about the base packages for
+any of these.
