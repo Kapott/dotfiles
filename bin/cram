@@ -5,8 +5,12 @@ if ! [ -x "$(command -v pigz)" ]; then
 	exit 1
 fi
 
-dt=$(date --iso-8601)
-threads=$(nproc --all)
-filename="${1}_${dt}.tar.gz"
-echo "Compressing ${@:2} into ${filename}"
-tar cf - ${@:2} | pigz -9 -p "${threads}" > "${filename}"
+if [ "$#" -eq "2" ]; then
+	dt=$(date --iso-8601)
+	threads=$(nproc --all)
+	filename="${1}_${dt}.tar.gz"
+	echo "[$0] Compressing ${@:2} into ${filename}"
+	tar cf - ${@:2} | pigz -9 -p "${threads}" > "${filename}"
+else
+	echo "[$0] Usage: $0 compressed_file_name files_or_dir_to_be_compressed"
+fi
