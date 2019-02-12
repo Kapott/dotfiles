@@ -1,0 +1,11 @@
+#!/bin/bash
+
+command -v ffmpeg >/dev/null 2>&1 || { echo >&2 "I require ffmpeg but it's not installed.  Aborting."; exit 1; }¬
+
+youtube-dl \
+  --extract-audio \
+  --audio-quality 0 \
+  --audio-format mp3 \
+  --output "$HOME/Music/%(title)s.%(ext)s" \
+  "$@"
+
