@@ -28,7 +28,7 @@ scripts:
 ubuntu:
 	sudo apt update && sudo apt install -y \
 		bash vim curl git tmux build-essential ffmpeg youtube-dl python3-pip python3-venv \
-		libssl-dev pigz jq
+		libssl-dev pigz jq ranger
 
 .PHONY: yarn
 yarn:
