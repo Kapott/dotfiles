@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+
+###
+# An alternative to using setxkbmap is using
+# sudo -n loadkeys ~/bin/ttymaps.kmap 2>/dev/null
+# when starting a window manager/terminal etc.
+###
+
 command -v setxkbmap >/dev/null 2>&1 || { echo >&2 "I require setxkbmap but it's not installed.  Aborting."; exit 1; }
 
 if [[ -n "$1" ]] && [[ "${1}" == "persist" ]];then
