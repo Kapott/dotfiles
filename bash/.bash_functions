@@ -25,3 +25,15 @@ function gpg_agent_start {
   fi
 }
 
+# Wrap the man command so it also works for bash built-ins, like
+# 'cd' and 'command'.
+function man () {
+    case "$(type -t -- "$1")" in
+    builtin|keyword)
+        help -m "$1" | sensible-pager
+        ;;
+    *)
+        command man "$@"
+        ;;
+    esac
+}
