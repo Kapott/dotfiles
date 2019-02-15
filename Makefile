@@ -1,5 +1,6 @@
 SHELL := /bin/bash
 
+.PHONY: dotfiles
 dotfiles: scripts
 	# Vim setup
 	test -L ${HOME}/.vimrc || rm -rf ${HOME}/.vimrc
@@ -19,26 +20,30 @@ dotfiles: scripts
 	ln -vsfn ${PWD}/git/.gitconfig ${HOME}/.gitconfig
 	ln -vsfn ${PWD}/curl/.curlrc ${HOME}/.curlrc
 
+.PHONY: scripts
 scripts:
 	rsync -avh ${PWD}/bin/* ${HOME}/bin
 
+.PHONY: ubuntu
 ubuntu:
 	sudo apt update && sudo apt install -y \
 		bash vim curl git tmux build-essential ffmpeg youtube-dl python3-pip python3-venv \
-		libssl-dev pigz
+		libssl-dev pigz jq
 
+.PHONY: yarn
 yarn:
 	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 	sudo apt-get update && sudo apt-get install --no-install-recommends yarn
 
+.PHONY: nvm
 nvm:
 	mkdir -p ${HOME}/.nvm
 	curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 
+.PHONY: i3
 i3:
 	test -d ${HOME}/.i3 || mkdir -p ${HOME}/.i3
 	test -L ${HOME}/.i3/config || mv ${HOME}/.i3/config ${HOME}/.i3/config_old
 	ln -vsfn ${PWD}/i3/.i3/config ${HOME}/.i3/config
 	ln -vsfn ${PWD}/i3/.i3status.conf ${HOME}/.i3status.conf
-
