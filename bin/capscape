@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+command -v setxkbmap >/dev/null 2>&1 || { echo >&2 "I require setxkbmap but it's not installed.  Aborting."; exit 1; }
+
+if [[ -n "$1" ]] && [[ "${1}" == "persist" ]];then
+    if ! command grep -qc 'caps:swapescape' "${HOME}/.profile"; then
+        echo "[$0] Appending CapsLock<-->Escape swap to .profile"
+        echo "setxkbmap -option \"caps:swapescape\"" >> ${HOME}/.profile
+        setxkbmap -option "caps:swapescape"
+    else
+        echo "[$0] Found CapsLock<-->Escape swap in .profile, aborting."
+        exit 1
+    fi
+else
+    setxkbmap -option "caps:swapescape"
+fi
