@@ -5,15 +5,17 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-stty -ixon # disable ctrl-s and ctrl-q
-shopt -s autocd # cd into a directory by typing it's name
-HISTSIZE= HISTFILESIZE= # infinite history size
+HISTSIZE= HISTFILESIZE=
+shopt -s autocd;
+shopt -s nocaseglob;
+shopt -s globstar;
+shopt -s histappend;
+shopt -s cdspell;
 
-# capitalize username and host if we're on the root user
-if [ "$EUID" -ne 0 ]
-	then export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 7)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 7)\]\h \[$(tput dim)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
-	else export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 7)\]ROOT\[$(tput setaf
-    1)\]@\[$(tput setaf 7)\]$(hostname | awk '{print toupper($0)}') \[$(tput dim)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+# Check if we have an interactive shell
+if [[ $- == *i* ]]; then
+	stty -ixon 	# Disable START/STOP output control with ctrl-s and ctrl-q
+	export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 7)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 7)\]\h \[$(tput dim)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 fi
 
 # Load all of our bash glory!
@@ -22,16 +24,6 @@ do
 	[ -r "$file" ] && source "$file";
 done;
 unset file;
-
-# Case-insensitive globbing
-shopt -s nocaseglob;
-shopt -s histappend;
-shopt -s cdspell;
-
-# Enable some bash 4 features
-for options in audocd globstar; do
-	shopt -s "$option" 2> /dev/null;
-done;
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -59,7 +51,6 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
