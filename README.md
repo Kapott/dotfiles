@@ -29,7 +29,7 @@ command, and forcing it into submission.
 
 I quote:
 
->> The purpose of the make utility is to determine automatically which pieces of a large program need to be recompiled, and issue the commands to recompile them.
+> The purpose of the make utility is to determine automatically which pieces of a large program need to be recompiled, and issue the commands to recompile them.
 
 
 Use at your own peril, stranger. There be dragons here ;)
