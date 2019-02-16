@@ -1,5 +1,12 @@
 #!/bin/bash
 
+###
+# An alias should effectively not (in general) do more than change the default
+# options of a command. It is nothing more than simple text replacement on the
+# command name. It can't do anything with arguments but pass them to the command
+# it actually runs.
+###
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."

@@ -1,12 +1,17 @@
 #!/bin/bash
 
-function command_exists {
-  type "$1" &> /dev/null
-}
+###
+# A function should be used when you need to do something more complex than an
+# alias but that wouldn't be of use on its own.
+###
 
 export NC='\033[0m' # No color
 export RED='\033[31m'
 export GREEN='\033[32m'
+
+function command_exists {
+  type "$1" &> /dev/null
+}
 
 function check_process {
   out=`ps aux | grep $1 | grep -v grep`
@@ -25,7 +30,7 @@ function gpg_agent_start {
   fi
 }
 
-# Wrap the man command so it also works for bash built-ins, like
+# Wraps the man command so it also works for bash built-ins, like
 # 'cd' and 'command'.
 function man () {
     case "$(type -t -- "$1")" in
