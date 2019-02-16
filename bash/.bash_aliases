@@ -15,6 +15,7 @@ alias h="history | grep " # e.g. h docker, then !123 to execute history
 alias ipx="curl ipinfo.io/ip" # Get external ip address
 alias l="ls -lAF" # Full, colorized listing
 alias ll=l
+alias lsl="ls -laF | grep '\->'" # show only symlinks
 alias ls="command ls --color"   # 'command' to use the 'real' ls instead of aliases
 alias lsd="ls -lF --color | grep --color=never '^d'" # List directories only
 alias memtop="ps aux | sort -nr -k 4 | tr -s ' ' | cut -d ' ' -f 1,2,4,11 | head -n 10"
