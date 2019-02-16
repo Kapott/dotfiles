@@ -9,10 +9,6 @@ export NC='\033[0m' # No color
 export RED='\033[31m'
 export GREEN='\033[32m'
 
-function command_exists {
-  type "$1" &> /dev/null
-}
-
 function check_process {
   out=`ps aux | grep $1 | grep -v grep`
   if [[ $out = *"$1"* ]]; then
@@ -20,6 +16,23 @@ function check_process {
   else
     echo -e "${RED}NOK${NC}: $1 not running"
   fi
+}
+
+function command_exists {
+  type "$1" &> /dev/null
+}
+
+function cputop {
+  ps aux | sort -nr -k 3 | tr -s ' ' | cut -d ' ' -f 1,2,3,11 | head -n 10
+}
+
+function datetag {
+  mod_date="$(stat -c %y ${1} | awk '{print $1}')"
+  mv ${1} ${mod_date}_${1}
+}
+
+function genpass {
+  command -v openssl >/dev/null 2>&1 && openssl rand -base64 25 | sed 's/..$//'
 }
 
 function gpg_agent_start {
@@ -41,4 +54,8 @@ function man () {
         command man "$@"
         ;;
     esac
+}
+
+function memtop {
+  ps aux | sort -nr -k 4 | tr -s ' ' | cut -d ' ' -f 1,2,4,11 | head -n 10
 }
