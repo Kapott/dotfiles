@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Usage: fullbackup <source_dir> <dest_dir>
+# Create a full backup of source_dir in dest_dir
+# using the rules laid out in ~/.rsync_includ
+
+sourcedir=${1:-"/home/kapott"}
+destdir=${2:-"/storage/backups/latest"}
+
+rsync -aPv \
+    --include-from=${HOME}/.rsync_include \
+    ${sourcedir} ${destdir}
