@@ -9,6 +9,18 @@ export NC='\033[0m' # No color
 export RED='\033[31m'
 export GREEN='\033[32m'
 
+# Usage:
+# biggestfiles <directory (optional)> <# of files to display (optional)>
+# Will show the biggest files in a directory and it's subdirectories
+function biggestfiles {
+  finddir=${1:-"."}
+  findnum=${2:-"20"}
+  find ${finddir} -type f -printf "%s\t%p\n" | sort -r -n | head ${findnum}
+}
+
+# Usage:
+# check_process <processname>
+# Checks if a process is running or not
 function check_process {
   out=`ps aux | grep $1 | grep -v grep`
   if [[ $out = *"$1"* ]]; then
@@ -18,21 +30,30 @@ function check_process {
   fi
 }
 
+# Usage:
+# command_exists <commandname>
+# Checks if a command exists in any way, shape or form
 function command_exists {
   type "$1" &> /dev/null
 }
 
+# Usage: cputop <number of processes to list (optional, default is 10)
+# Shows a list of <num> running processes, sorted by most usage
 function cputop {
-  ps aux | sort -nr -k 3 | tr -s ' ' | cut -d ' ' -f 1,2,3,11 | head -n 10
+  ps aux | sort -nr -k 3 | tr -s ' ' | cut -d ' ' -f 1,2,3,11 | head -n ${1:-"10"}
 }
 
+# Usage: datetag <filename>
+# Will change  a file's name to <filename>_<last_modified_date>
 function datetag {
   mod_date="$(stat -c %y ${1} | awk '{print $1}')"
   mv ${1} ${mod_date}_${1}
 }
 
+# Usage: genpass <length (optional, default is 25)>
+# Generate a password using openssl rand
 function genpass {
-  command -v openssl >/dev/null 2>&1 && openssl rand -base64 25 | sed 's/..$//'
+  command -v openssl >/dev/null 2>&1 && openssl rand -base64 ${1:-"25"} | sed 's/..$//'
 }
 
 function gpg_agent_start {
@@ -56,6 +77,16 @@ function man () {
     esac
 }
 
+# Usage: memtop <number of processes to show (optional, default is 10)>
+# Shows a list of <num> running processes, sorted by most usage
 function memtop {
-  ps aux | sort -nr -k 4 | tr -s ' ' | cut -d ' ' -f 1,2,4,11 | head -n 10
+  ps aux | sort -nr -k 4 | tr -s ' ' | cut -d ' ' -f 1,2,4,11 | head -n ${1:-"10"}
+}
+
+# Realsize is useful for determining the actual size of e.g. incremental
+# backup locations, since incremental backups are done by hard-linking.
+# This means that the "real" total size is only the difference between
+# the last full backup, and the current state.
+function realsize {
+  du -shc "$@"
 }
