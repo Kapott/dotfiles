@@ -22,6 +22,7 @@ alias l="ls -lAF" # Full, colorized listing
 alias ll=l
 alias ls="command ls --color"   # 'command' to use the 'real' ls instead of aliases
 alias lsd="ls -lF --color | grep --color=never '^d'" # List directories only
+alias lsds="du -cksh * | sort -hr" # List directories, sorted by dirsize desc
 alias lsl="find . -maxdepth 1 -type l -ls" # show only symlinks
 alias mkdir="command mkdir -pv "
 alias mus="cd ${HOME}/Music"
