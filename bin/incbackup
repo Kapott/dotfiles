@@ -5,36 +5,30 @@
 # by a cronjob.
 ##
 
-set +x
-
 # Check if we have rsync to our disposal
 command -v rsync >/dev/null 2>&1 || { echo >&2 "I require rsync but it's not installed.  Aborting."; exit 1; }
 
-echo "set vars"
-
 backups_destination="/storage/backups" #Adjust this to your liking
-backups_origin="${HOME:-/home}"
+backups_origin="${HOME:-/home/kapott}"
 
 latest_full_backup_dir="${backups_destination}/latest/"
-incremental_backup_dir="${backups_destionation}/daily"
+incremental_backup_dir="${backups_destination}/daily"
 
 datetime=`/bin/date +%Y%m%d_%H%M%S`
 rsync_command=$(command -v rsync)
-rsync_includefile=${HOME}/.rsync_include
+rsync_includefile="${HOME}/.rsync_include"
 
-target=${backup_dir}/daily
-
-echo "check dirs and make em"
 [[ ! -d "${incremental_backup_dir}" ]] && mkdir -p ${incremental_backup_dir}
-[[ ! -d "${incremental_backup_dir}" ]] && printf "Could not create backup dir %s, exiting!\n" "${incremental_backup_dir}"; exit 1;
 
-echo "calling rsync"
-$_rsync -aPvv \
-  --exclude="*" \
-  --include-from=${rsync_includefile} \
-  --link-dest=${latest_full_backup_dir} \
-  ${backups_origin} ${incremental_backup_dir}/${datetime}/
-
-touch $incremental_backup_dir/$datetime/
-rm $incremental_backup_dir/latest
-ln -s $target/$datetime $target/latest
+if [ -d "${incremental_backup_dir}" ]; then
+  $rsync_command -aPvv \
+    --include-from=${rsync_includefile} \
+    --link-dest=${latest_full_backup_dir} \
+    ${backups_origin} \
+    ${incremental_backup_dir}/${datetime}/
+    touch $incremental_backup_dir/$datetime/
+    [[ -h "$incremental_backup_dir/latest" ]] && rm $incremental_backup_dir/latest
+    ln -s $incremental_backup_dir/$datetime $incremental_backup_dir/latest
+else
+  printf "Could not create backup dir %s, exiting!\n" "${incremental_backup_dir}"
+fi
