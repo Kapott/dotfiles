@@ -25,7 +25,7 @@ main() {
     printf "%s\t\t%s\n" "geo long     " "${fields[9]}"
   else
     echo 'Request returned invalid output:'
-    printf "%s" "$location"
+    printf "%s\n" "$location"
   fi
 }
 
