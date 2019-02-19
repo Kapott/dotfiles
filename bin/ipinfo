@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+main() {
+  local have_curl=$(check_curl)
+  if [[ "$have_curl" == "1" ]]; then
+    printf "%s\n" "Could not find curl, we need curl!"
+    exit 1
+  fi
+
+  local location=$(make_request "$@")
+
+  IFS=',': read -ra fields <<< "$location"
+  local fieldlength=${#fields[@]}
+
+  if [[ "$fieldlength" -eq 11 ]]; then
+    printf "%s\t\t%s\n" "ip address   " "${fields[0]}"
+    printf "%s\t\t%s\n" "country code " "${fields[1]}"
+    printf "%s\t\t%s\n" "country name " "${fields[2]}"
+    printf "%s\t\t%s\n" "province code" "${fields[3]}"
+    printf "%s\t\t%s\n" "province     " "${fields[4]}"
+    printf "%s\t\t%s\n" "city         " "${fields[5]}"
+    printf "%s\t\t%s\n" "zip/postal code" "${fields[6]}"
+    printf "%s\t\t%s\n" "timezone     " "${fields[7]}"
+    printf "%s\t\t%s\n" "geo lat      " "${fields[8]}"
+    printf "%s\t\t%s\n" "geo long     " "${fields[9]}"
+  else
+    echo 'Request returned invalid output:'
+    printf "%s" "$location"
+  fi
+}
+
+make_request() {
+  local endpoint='https://freegeoip.app/csv'
+  local response=$(curl -s "$endpoint/$@")
+  echo $response
+}
+
+check_curl() {
+  command -v curl >/dev/null 2>&1 || echo 1
+}
+
+main "$@"
