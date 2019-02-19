@@ -13,8 +13,8 @@ export GREEN='\033[32m'
 # biggestfiles <directory (optional)> <# of files to display (optional)>
 # Will show the biggest files in a directory and it's subdirectories
 function biggestfiles {
-  finddir=${1:-"."}
-  findnum=${2:-"20"}
+  local finddir=${1:-"."}
+  local findnum=${2:-"20"}
   find ${finddir} -type f -printf "%s\t%p\n" | sort -r -n | head ${findnum}
 }
 
@@ -22,7 +22,7 @@ function biggestfiles {
 # check_process <processname>
 # Checks if a process is running or not
 check_process() {
-  out=`ps aux | grep $1 | grep -v grep`
+  local out=`ps aux | grep $1 | grep -v grep`
   if [[ $out = *"$1"* ]]; then
     echo -e "${GREEN}OK${NC}: $1 is running"
   else
@@ -46,7 +46,7 @@ cputop() {
 # Usage: datetag <filename>
 # Will change  a file's name to <filename>_<last_modified_date>
 datetag() {
-  mod_date="$(stat -c %y ${1} | awk '{print $1}')"
+  local mod_date="$(stat -c %y ${1} | awk '{print $1}')"
   mv ${1} ${mod_date}_${1}
 }
 
