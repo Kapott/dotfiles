@@ -19,7 +19,7 @@ if [[ $- == *i* ]]; then
 fi
 
 # Load all of our bash glory!
-for file in $HOME/{.bash_aliases,.bash_functions,.bash_extra}
+for file in $HOME/{.bash_aliases,.bash_functions,.bash_extra,.bash_prompt}
 do
 	[ -r "$file" ] && source "$file";
 done;

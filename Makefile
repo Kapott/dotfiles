@@ -16,6 +16,7 @@ dotfiles: scripts
 	ln -vsfn ${PWD}/bash/.bash_aliases ${HOME}/.bash_aliases
 	ln -vsfn ${PWD}/bash/.bash_functions ${HOME}/.bash_functions
 	ln -vsfn ${PWD}/bash/.bash_extra ${HOME}/.bash_extra
+	ln -vsfn ${PWD}/bash/.bash_prompt ${HOME}/.bash_prompt
 
 	# Xorg settings
 	ln -vsfn ${PWD}/xorg/.Xmodmap ${HOME}/.Xmodmap # remaps capslock and escape
