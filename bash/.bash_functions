@@ -64,6 +64,13 @@ gpg_agent_start() {
   fi
 }
 
+# Usage: killport <portnum>
+# Kills the process running on port <portnum>
+killport() {
+  local portnum=${1:-"80"}
+  lsof -i :${portnum} | awk '{l=$2} END {print l}' | xargs kill
+}
+
 # Wraps the man command so it also works for bash built-ins, like
 # 'cd' and 'command'.
 man() {
