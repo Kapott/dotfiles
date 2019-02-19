@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Usage: fullbackup <source_dir> <dest_dir>
 # Create a full backup of source_dir in dest_dir

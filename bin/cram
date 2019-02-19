@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if ! [ -x "$(command -v pigz)" ]; then
 	echo >&2 "I require pigz but it's not installed.  Aborting."
