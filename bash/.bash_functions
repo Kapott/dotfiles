@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###
 # A function should be used when you need to do something more complex than an
@@ -21,7 +21,7 @@ function biggestfiles {
 # Usage:
 # check_process <processname>
 # Checks if a process is running or not
-function check_process {
+check_process() {
   out=`ps aux | grep $1 | grep -v grep`
   if [[ $out = *"$1"* ]]; then
     echo -e "${GREEN}OK${NC}: $1 is running"
@@ -33,30 +33,30 @@ function check_process {
 # Usage:
 # command_exists <commandname>
 # Checks if a command exists in any way, shape or form
-function command_exists {
+command_exists() {
   type "$1" &> /dev/null
 }
 
 # Usage: cputop <number of processes to list (optional, default is 10)
 # Shows a list of <num> running processes, sorted by most usage
-function cputop {
+cputop() {
   ps aux | sort -nr -k 3 | tr -s ' ' | cut -d ' ' -f 1,2,3,11 | head -n ${1:-"10"}
 }
 
 # Usage: datetag <filename>
 # Will change  a file's name to <filename>_<last_modified_date>
-function datetag {
+datetag() {
   mod_date="$(stat -c %y ${1} | awk '{print $1}')"
   mv ${1} ${mod_date}_${1}
 }
 
 # Usage: genpass <length (optional, default is 25)>
 # Generate a password using openssl rand
-function genpass {
+genpass() {
   command -v openssl >/dev/null 2>&1 && openssl rand -base64 ${1:-"25"} | sed 's/..$//'
 }
 
-function gpg_agent_start {
+gpg_agent_start() {
   check_process gpg-agent | grep 'KO' &> /dev/null
   if [ $? == 0 ]; then
     gpg-agent --daemon
@@ -66,7 +66,7 @@ function gpg_agent_start {
 
 # Wraps the man command so it also works for bash built-ins, like
 # 'cd' and 'command'.
-function man () {
+man() {
     case "$(type -t -- "$1")" in
     builtin|keyword)
         help -m "$1" | sensible-pager
@@ -79,7 +79,7 @@ function man () {
 
 # Usage: memtop <number of processes to show (optional, default is 10)>
 # Shows a list of <num> running processes, sorted by most usage
-function memtop {
+memtop() {
   ps aux | sort -nr -k 4 | tr -s ' ' | cut -d ' ' -f 1,2,4,11 | head -n ${1:-"10"}
 }
 
@@ -87,6 +87,6 @@ function memtop {
 # backup locations, since incremental backups are done by hard-linking.
 # This means that the "real" total size is only the difference between
 # the last full backup, and the current state.
-function realsize {
+realsize() {
   du -shc "$@"
 }
