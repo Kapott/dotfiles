@@ -33,7 +33,8 @@ scripts:
 ubuntu:
 	sudo apt update && sudo apt install -y \
 		bash vim curl git tmux build-essential ffmpeg youtube-dl python3-pip python3-venv \
-		libssl-dev pigz jq ranger meld
+		libssl-dev pigz jq ranger meld net-tools
+	sudo snap install nmap
 	sudo add-apt-repository -y ppa:bookworm-team/bookworm
 	sudo apt-get update && sudo apt-get install -y com.github.babluboy.bookworm
 
