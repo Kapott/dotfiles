@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Usage:
+# selfscan
+# Uses nmap to scan all interfaces which have an ip address assigned to them.
+
+# Needs a rewrite; depends on ifconfig (deprecated), xargs and nmap.
+ifconfig -a | grep -Po '\b(?!255)(?:\d{1,3}\.){3}(?!255)\d{1,3}\b' | xargs nmap -A -p0-
