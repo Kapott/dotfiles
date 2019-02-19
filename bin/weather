@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
-default_weather="brunssum"
-command -v curl >/dev/null 2>&1 || { echo >&2 "I require curl but it's not installed.  Aborting."; exit 1; }
-curl http://wttr.in/${1:-$default_weather}
+
+main () {
+  local default_weather="brunssum"
+  if [[ "$have_curl" == "1" ]]; then
+    printf "%s\n" "Could not find curl, we need curl!"
+    exit 1
+  fi
+  curl http://wttr.in/${1:-$default_weather}
+}
+
+check_curl() {
+  command -v curl >/dev/null 2>&1 || echo 1
+}
+
+main "$@"
