@@ -15,7 +15,7 @@ shopt -s cdspell;
 # Check if we have an interactive shell
 if [[ $- == *i* ]]; then
 	stty -ixon 	# Disable START/STOP output control with ctrl-s and ctrl-q
-	export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 7)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 7)\]\h \[$(tput dim)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+	# export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 7)\]\u\[$(tput setaf 1)\]@\[$(tput setaf 7)\]\h \[$(tput dim)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
 fi
 
 # Load all of our bash glory!
