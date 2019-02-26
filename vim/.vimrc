@@ -148,6 +148,7 @@ let g:NERDTreeWinSize=40
 
 "--- Autoclose if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
 
 "--- Ctrl-P settings
 let g:ctrlp_map = '<c-p>'
