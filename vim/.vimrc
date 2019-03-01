@@ -28,6 +28,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'isRuslan/vim-es6'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'majutsushi/tagbar'
 call vundle#end()
 
 "--- Syntax highlighting & color scheme
@@ -39,8 +40,8 @@ set background=dark
 set backspace=indent,eol,start
 
 "--- Text wrapping & line length
-set colorcolumn=101
-set textwidth=100
+set colorcolumn=81
+set textwidth=80
 set wrap
 
 "--- Code indentation & formatting
@@ -80,6 +81,8 @@ nnoremap th :tabnext<CR>
 nnoremap tl :tabprev<CR>
 nnoremap tn :tabnew<CR>
 nnoremap tx :tabclose<CR>
+map <D-S-]> gt
+map <D-S-[> gT
 
 "--- Toggle invisible chars (t)oggle (i)nvisible
 nnoremap <Leader>ti :set list!<CR>
