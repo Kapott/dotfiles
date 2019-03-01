@@ -2,7 +2,7 @@ set nocp
 
 "--- Vundle bootstrap & plugin setup
 if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
-  exec '!git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim/'
+	exec '!git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim/'
 endif
 
 filetype off
@@ -172,7 +172,7 @@ let g:ctrlp_cmd = 'CtrlP'
 
 "--- Plugin: Airline
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 
 " unicode symbols
