@@ -23,6 +23,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'majutsushi/tagbar'
+Plugin 'universal-ctags/ctags'
+Plugin 'vim-syntastic/syntastic'
 
 "-- Git integrations
 Plugin 'airblade/vim-gitgutter'
