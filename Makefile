@@ -32,7 +32,7 @@ scripts:
 .PHONY: ubuntu
 ubuntu:
 	sudo apt update && sudo apt install -y \
-		bash vim ctags curl git tmux build-essential ffmpeg youtube-dl \
+		bash vim autoconf curl git tmux build-essential ffmpeg youtube-dl \
 		python3-pip python3-venv libssl-dev pigz jq ranger meld \
 		net-tools lm-sensors
 	sudo snap install nmap tree docker
