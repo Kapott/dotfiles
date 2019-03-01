@@ -26,6 +26,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'universal-ctags/ctags'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
+Plugin 'w0rp/ale'
 
 "-- Git integrations
 Plugin 'airblade/vim-gitgutter'
@@ -151,6 +152,7 @@ augroup myvimrc
 augroup END
 
 "--- Plugin: Tagbar
+nnoremap <Leader>tt :Tagbar<CR>
 autocmd FileType * nested :call tagbar#autoopen(0)
 
 "--- Plugin: Fugitive
