@@ -12,23 +12,38 @@ set rtp+=~/.vim/bundle/ctrlp.vim
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
+
+"-- Color scheme and appearance
 Plugin 'sickill/vim-monokai'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+"-- IDE-like features
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'majutsushi/tagbar'
+
+"-- Git integrations
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-scripts/todo-txt.vim'
+
+"-- Utility functions / libs / dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+
+"-- Snippets
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
+"
+"-- Text/markdown plugins
+Plugin 'vim-scripts/todo-txt.vim'
+
+"-- Javascript / Ecmascript / Typescript
 Plugin 'isRuslan/vim-es6'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'majutsushi/tagbar'
+
 call vundle#end()
 
 "--- Syntax highlighting & color scheme
@@ -81,8 +96,6 @@ nnoremap th :tabnext<CR>
 nnoremap tl :tabprev<CR>
 nnoremap tn :tabnew<CR>
 nnoremap tx :tabclose<CR>
-map <D-S-]> gt
-map <D-S-[> gT
 
 "--- Toggle invisible chars (t)oggle (i)nvisible
 nnoremap <Leader>ti :set list!<CR>
