@@ -14,7 +14,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 "-- Color scheme and appearance
-Plugin 'sickill/vim-monokai'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
@@ -53,7 +53,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 "syntax enable
-colorscheme monokai
+colorscheme molokai
 set background=dark
 set backspace=indent,eol,start
 
