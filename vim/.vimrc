@@ -27,6 +27,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'isRuslan/vim-es6'
+Plugin 'leafgarland/typescript-vim'
 call vundle#end()
 
 "--- Syntax highlighting & color scheme
