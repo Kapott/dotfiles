@@ -1,10 +1,21 @@
 #!/usr/bin/env bash
+main() {
+	have_dependencies=$(check_dependencies)
+	if [[ "$have_dependencies" == "1" ]]; then
+		printf "%s\n" "Required dependencies not met (need ffmpeg!)"
+		exit 1
+	fi
 
-command -v ffmpeg >/dev/null 2>&1 || { echo >&2 "I require ffmpeg but it's not installed.  Aborting."; exit 1; }¬
+	youtube-dl \
+		--extract-audio \
+		--audio-quality 0 \
+		--audio-format mp3 \
+		--output "$HOME/Music/%(title)s.%(ext)s" \
+		"$@"
+}
 
-youtube-dl \
-  --extract-audio \
-  --audio-quality 0 \
-  --audio-format mp3 \
-  --output "$HOME/Music/%(title)s.%(ext)s" \
-  "$@"
+check_dependencies() {
+	command -v ffmpeg >/dev/null 2>&1 || echo 1
+}
+
+main "$@"
