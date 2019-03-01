@@ -2,6 +2,7 @@
 
 main () {
   local default_weather="brunssum"
+  have_curl=$(check_curl)
   if [[ "$have_curl" == "1" ]]; then
     printf "%s\n" "Could not find curl, we need curl!"
     exit 1
