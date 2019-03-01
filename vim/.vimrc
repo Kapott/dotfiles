@@ -25,11 +25,11 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'majutsushi/tagbar'
 Plugin 'universal-ctags/ctags'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-surround'
 
 "-- Git integrations
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
 
 "-- Utility functions / libs / dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
