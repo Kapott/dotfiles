@@ -148,37 +148,27 @@ augroup myvimrc
 	au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
 
-"--- Git settings (fugitive)
+"--- Plugin: Tagbar
+autocmd FileType * nested :call tagbar#autoopen(0)
+
+"--- Plugin: Fugitive
 nnoremap <Leader>gc :Gcommit %<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gst :Gstatus<CR>
 
-"--- Split creation, usage & navigation (integrate with tmux!)
-"nnoremap <C-j> <C-w><C-j>
-"nnoremap <C-k> <C-w><C-k>
-"nnoremap <C-l> <C-w><C-l>
-"nnoremap <C-h> <C-w><C-h>
-
-"--- Nerdtree specific settings
+"--- Plugin: Nerdtree
 map <C-n> ;NERDTreeToggle<CR>
 let g:NERDTreeWinSize=40
 
-"--- Autoclose if NERDTree is the only window left
+"Autoclose if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeShowHidden=1
 
-"--- Ctrl-P settings
+"--- Plugin: Ctrl-P
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
-"--- Remap arrow keys, strange behaviour etc.
-" set t_ku=OA
-" set t_kd=OB
-" set t_kl=OD
-" set t_kr=OC
-
-set encoding=utf-8
-"--- Airline status bar symbols maping
+"--- Plugin: Airline
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
