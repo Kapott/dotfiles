@@ -10,7 +10,7 @@
 	whitespace = fix, -indent-with-non-tab,trailing-space,cr-at-eol
 
 [credential]
-	helper = /usr/libexec/git-core/git-credential-libsecret
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 
 [color]
 	ui = true
