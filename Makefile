@@ -33,7 +33,7 @@ scripts:
 ubuntu:
 	sudo apt update && sudo apt install -y \
 		bash vim autoconf curl git tmux build-essential ffmpeg youtube-dl \
-		python3-pip python3-venv libssl-dev pigz jq ranger meld \
+		python3-pip python3-venv libssl-dev pigz jq ranger meld pkg-config \
 		net-tools lm-sensors
 	sudo snap install nmap tree docker
 	sudo add-apt-repository -y ppa:bookworm-team/bookworm
