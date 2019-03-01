@@ -32,8 +32,9 @@ scripts:
 .PHONY: ubuntu
 ubuntu:
 	sudo apt update && sudo apt install -y \
-		bash vim curl git tmux build-essential ffmpeg youtube-dl python3-pip python3-venv \
-		libssl-dev pigz jq ranger meld net-tools lm-sensors
+		bash vim ctags curl git tmux build-essential ffmpeg youtube-dl \
+		python3-pip python3-venv libssl-dev pigz jq ranger meld \
+		net-tools lm-sensors
 	sudo snap install nmap tree docker
 	sudo add-apt-repository -y ppa:bookworm-team/bookworm
 	sudo apt-get update && sudo apt-get install -y com.github.babluboy.bookworm
