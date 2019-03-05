@@ -11,12 +11,13 @@ main() {
 }
 
 compress() {
+	local dt threads filename
 	if [[ "$#" -eq "2" ]]; then
-		local dt=$(date --iso-8601)
-		local threads=$(nproc --all)
-		local filename="${1%.tar.gz}_${dt}.tar.gz"
-		echo "[$0] Compressing ${@:2} into ${filename}"
-		tar cf - ${@:2} | pigz -9 -p "${threads}" > "${filename}"
+		dt=$(date --iso-8601)
+		threads=$(nproc --all)
+		filename="${1%.tar.gz}_${dt}.tar.gz"
+		echo "[$0] Compressing ${*:2} into ${filename}"
+		tar cf - "${@:2}" | pigz -9 -p "${threads}" > "${filename}"
 	else
 		echo "[$0] Usage: $0 compressed_file_name files_or_dir_to_be_compressed"
 	fi
