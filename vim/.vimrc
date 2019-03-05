@@ -172,6 +172,15 @@ let NERDTreeShowHidden=1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+"--- Plugin: Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+
 "--- Plugin: Airline
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
