@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Compare directories by filenames
+# instead of file contents (faster)
+main() {
+  local err tempfile1 tempfile2
+
+  err=$(check_arguments $#)
+  if [[ "$err" != "0" ]]; then
+    usage_exit
+  fi
+
+  tempfile1=$(mktemp)
+  tempfile2=$(mktemp)
+  (cd $1 && (find . | sort ) > $tempfile1)
+  (cd $2 && (find . | sort ) > $tempfile2)
+
+  diff $tempfile1 $tempfile2
+  rm $tempfile1 $tempfile2
+}
+
+check_arguments() {
+  if (( $1 != 2 )); then
+    echo 1
+  else
+    echo 0
+  fi
+}
+
+usage_exit() {
+  printf "%s\n" "Usage: $0 <dir1> <dir2>"
+}
+
+main "$@"
