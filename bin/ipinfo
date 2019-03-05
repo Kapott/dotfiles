@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
 main() {
-  local have_curl
-  local location
-  local fieldlength
+  local have_curl location fieldlength
 
   have_curl=$(check_curl)
   if [[ "$have_curl" == "1" ]]; then
@@ -34,8 +32,7 @@ main() {
 }
 
 make_request() {
-  local response
-  local endpoint
+  local response endpoint
   endpoint='https://freegeoip.app/csv'
   response=$(curl -s "$endpoint/$*")
   echo $response
