@@ -15,14 +15,14 @@ export GREEN='\033[32m'
 function biggestfiles {
   local finddir=${1:-"."}
   local findnum=${2:-"20"}
-  find ${finddir} -type f -printf "%s\t%p\n" | sort -r -n | head ${findnum}
+  find "${finddir}" -type f -printf "%s\t%p\n" | sort -r -n | head "${findnum}"
 }
 
 # Usage:
 # check_process <processname>
 # Checks if a process is running or not
 check_process() {
-  local out=`ps aux | grep $1 | grep -v grep`
+	local out=$(ps aux | grep "$1" | grep -v grep)
   if [[ $out = *"$1"* ]]; then
     echo -e "${GREEN}OK${NC}: $1 is running"
   else
