@@ -38,8 +38,6 @@ ubuntu:
 	sudo snap install nmap tree docker
 	sudo add-apt-repository -y ppa:bookworm-team/bookworm
 	sudo apt-get update && sudo apt-get install -y com.github.babluboy.bookworm
-	wget -O - https://raw.githubusercontent.com/laurent22/joplin/master/Joplin_install_and_update.sh | bash
-
 
 .PHONY: yarn
 yarn:
