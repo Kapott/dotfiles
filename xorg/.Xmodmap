@@ -1,3 +1,7 @@
-clear lock
-keycode 9 = Caps_Lock NoSymbol Caps_Lock
-keycode 66 = Escape NoSymbol Escape
+! Deprecated because I'm using ubuntu now
+! which means I can use gnome-tweak-tool
+! (tweaks->keyboard&mouse->additional layout options->caps-lock key behaviour)
+
+!clear lock
+!keycode 9 = Caps_Lock NoSymbol Caps_Lock
+!keycode 66 = Escape NoSymbol Escape
