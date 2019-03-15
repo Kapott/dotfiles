@@ -1,5 +1,5 @@
-! Deprecated because I'm using ubuntu now
-! which means I can use gnome-tweak-tool
+! Deprecated because I'm using ubuntu now which means I can use gnome-tweak-tool
+! for more consistent capslock behaviour
 ! (tweaks->keyboard&mouse->additional layout options->caps-lock key behaviour)
 
 !clear lock
