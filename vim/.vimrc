@@ -103,6 +103,9 @@ nnoremap tx :tabclose<CR>
 "--- Toggle invisible chars (t)oggle (i)nvisible
 nnoremap <Leader>ti :set list!<CR>
 
+"--- Abbreviation list (wip)
+iab <expr> dts strftime("%F")
+
 "--- Spaces, and tabs and files - oh my!
 " ts = width of tab
 " sw = amount of columns to indent with >> or <<
@@ -153,7 +156,7 @@ augroup END
 
 "--- Plugin: Tagbar
 nnoremap <Leader>tt :Tagbar<CR>
-autocmd FileType * nested :call tagbar#autoopen(0)
+autocmd FileType * :call tagbar#autoopen(0)
 
 "--- Plugin: Fugitive
 nnoremap <Leader>gc :Gcommit %<CR>
