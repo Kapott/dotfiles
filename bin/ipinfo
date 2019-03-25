@@ -35,7 +35,7 @@ make_request() {
   local response endpoint
   endpoint='https://freegeoip.app/csv'
   response=$(curl -s "$endpoint/$*")
-  echo $response
+  echo "$response"
 }
 
 check_curl() {
