@@ -32,9 +32,10 @@ scripts:
 .PHONY: ubuntu
 ubuntu:
 	sudo apt update && sudo apt install -y \
-		bash vim autoconf curl git tmux build-essential ffmpeg youtube-dl \
+		bash vim-gtk autoconf curl git tmux build-essential ffmpeg youtube-dl \
 		python3-pip python3-venv libssl-dev pigz jq ranger meld pkg-config \
-		net-tools lm-sensors libsecret-1-0 libsecret-1-dev global p7zip-full
+		net-tools lm-sensors libsecret-1-0 libsecret-1-dev global p7zip-full \
+		peek flameshot
 	sudo snap install nmap tree docker
 
 .PHONY: yarn
