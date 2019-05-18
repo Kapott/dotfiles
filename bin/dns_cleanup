@@ -1,0 +1,32 @@
+#!/bin/env bash
+
+### CAUTION: THIS IS A DRAFT VERSION, CODE IS HORRIBLE ###
+
+# Usage : dns_cleanup.sh <input textfile with nameservers>
+# Output : healthy.txt
+# Will remove unreachable, slow, unresponsive, REFUSED and "fake-domain exists"
+# responses. Runs in parallel.
+#
+# Depends on: GNU coreutil "timeout", Bash > 4.3 for the "wait -n"
+
+paralleltasks=10
+touch $PWD/healthy.txt
+
+dnslookup() {
+	result=$(timeout 2 host nonexistent.google.com $1 | grep -iE "NXDOMAIN|SERVFAIL")
+	if [ ! -z "$result" ]; then
+		 echo "$1: seems clean."
+		 echo $1>> $PWD/healthy.txt
+	else
+		echo "$1: skipping (undesired or no response)"
+	fi
+}
+
+i=0
+while IFS= read -r line; do
+	if (( i++ >= paralleltasks )); then
+		wait -n
+	fi
+	dnslookup "$line" &
+done < $1
+wait
