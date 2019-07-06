@@ -39,9 +39,6 @@ Plugin 'tomtom/tlib_vim'
 "-- Snippets
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-"
-"-- Text/markdown plugins
-Plugin 'vim-scripts/todo-txt.vim'
 
 "-- Javascript / Ecmascript / Typescript
 Plugin 'isRuslan/vim-es6'
