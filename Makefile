@@ -35,7 +35,7 @@ ubuntu:
 		bash vim-gtk autoconf curl git tmux build-essential ffmpeg youtube-dl \
 		python3-pip python3-venv libssl-dev pigz jq ranger meld pkg-config \
 		net-tools lm-sensors libsecret-1-0 libsecret-1-dev global p7zip-full \
-		peek flameshot
+		peek flameshot scrot
 	sudo snap install nmap tree docker
 
 .PHONY: yarn
@@ -53,6 +53,8 @@ nvm:
 .PHONY: i3
 i3:
 	test -d ${HOME}/.i3 || mkdir -p ${HOME}/.i3
-	test -L ${HOME}/.i3/config || mv ${HOME}/.i3/config ${HOME}/.i3/config_old
+	#test -L ${HOME}/.i3/config || mv ${HOME}/.i3/config ${HOME}/.i3/config_old
 	ln -vsfn ${PWD}/i3/.i3/config ${HOME}/.i3/config
 	ln -vsfn ${PWD}/i3/.i3status.conf ${HOME}/.i3status.conf
+	mkdir -p ${HOME}/.xlock
+	ln -vsfn ${PWD}/.xlock/lock.png ${HOME}/.xlock/lock.png
