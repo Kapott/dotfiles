@@ -227,6 +227,13 @@ assign [class="google-chrome"] $ws1
 assign [class="Chromium"] $ws1
 assign [class="Code"] $ws3
 
+# because we have all browsers, tabbed, in window 1 -
+# a default title makes more sense..
+for_window [class="(?i)Firefox"] title_format "Firefox"
+for_window [class="(?i)Brave"] title_format "Brave"
+for_window [class="(?i)google-chrome"] title_format "Chrome"
+for_window [class="(?i)Chromium"] title_format "Chromium"
+
 # mod-scroll mouse to toggle window-modes
 bindsym $mod+button4 layout toggle stacking tabbed
 bindsym $mod+button5 layout toggle splith splitv
