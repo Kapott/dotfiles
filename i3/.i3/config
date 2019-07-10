@@ -9,9 +9,10 @@ set $red #c00000
 set $lgray #75715e
 set $dgray #666666
 set $black #272822
-set $white #f8f8f2
-set $pink #f92672
-set $green #a6e22e
+set $white #f5f5f5
+set $pink #F92672
+set $green #A6E22E
+set $orange #fd971f
 
 # Font definition
 font pango:Hack 8
@@ -101,8 +102,8 @@ set $ws10 "10: "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1; layout tabbed
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
+bindsym $mod+2 workspace $ws2; layout tabbed
+bindsym $mod+3 workspace $ws3; layout tabbed
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
@@ -160,7 +161,7 @@ bindsym Mod1+r mode "resize"
 
 # i3 colors
 # <class> <border> <background> <text> <indicator> <child_border>
-client.focused  $lgray $lgray $white $lgray $black
+client.focused  $green $green $dgray $lgray $black
 client.focused_inactive $black $black $dgray $black $black
 client.unfocused 	$black $black $lgray $black $black
 client.urgent		$black $black $red $black $black
@@ -180,13 +181,13 @@ bar {
 
   colors {
     background $white
-    statusline $dgray
+    statusline $black
     separator $white
 
-    focused_workspace $white $red $white
+    focused_workspace $white $pink $white
     active_workspace $white $black $white
-    inactive_workspace $white $white $dgray
-    urgent_workspace $red $white $dgray
+    inactive_workspace $white $white $black
+    urgent_workspace $white $orange $white
   }
 }
 
@@ -226,6 +227,8 @@ assign [class="Brave"] $ws1
 assign [class="google-chrome"] $ws1
 assign [class="Chromium"] $ws1
 assign [class="Code"] $ws3
+assign [class="(?i)vscodium"] $ws3
+assign [class="Eclipse"] $ws3
 
 # because we have all browsers, tabbed, in window 1 -
 # a default title makes more sense..
