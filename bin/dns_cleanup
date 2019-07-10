@@ -1,0 +1,24 @@
+#!/bin/env bash
+
+# Use at your own peril. This bash script was written in approximately 
+# 2 minutes and could turn out to be a dragon.
+#
+# Returns only DNS servers which give a valid NXDOMAIN or SERVFAIL, which
+# also respond within 2 seconds.
+
+paralleltasks=10
+dnslookup() {
+	result=$(timeout 2 host nonexistent.google.com $1 | grep -iE "NXDOMAIN|SERVFAIL")
+	if [ ! -z "$result" ]; then
+	  printf "%s\n" $1
+	fi
+}
+
+i=0
+while IFS= read -r line; do
+	if (( i++ >= paralleltasks )); then
+		wait -n
+	fi
+	dnslookup "$line" &
+done < $1
+wait
