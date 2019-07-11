@@ -18,8 +18,8 @@ set $orange #fd971f
 font pango:Hack 8
 
 # Set up VIM-like controls
-set $up j
-set $down k
+set $up k
+set $down j
 set $left h
 set $right l
 
@@ -165,8 +165,7 @@ mode "resize" {
 bindsym Mod1+r mode "resize"
 
 # i3 colors
-# <class> <border> <background> <text> <indicator> <child_border>
-client.focused  $green $green $dgray $lgray $black
+client.focused	$black $green $black $black $black
 client.focused_inactive $black $black $dgray $black $black
 client.unfocused 	$black $black $lgray $black $black
 client.urgent		$black $black $red $black $black
