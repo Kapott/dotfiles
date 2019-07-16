@@ -12,6 +12,9 @@ shopt -s globstar;
 shopt -s histappend;
 shopt -s cdspell;
 
+# Enable vim-mode in bash
+set -o vi
+
 # Check if we have an interactive shell
 if [[ $- == *i* ]]; then
 	stty -ixon 	# Disable START/STOP output control with ctrl-s and ctrl-q
