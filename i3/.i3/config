@@ -253,3 +253,5 @@ exec sh ~/.fehbg
 # Use parcellite as clipboard manager
 exec --no-startup-id parcellite
 bindsym Mod4+Shift+l exec /home/kapott/bin/i3_lockscreen.sh
+gaps inner 5
+gaps outer 10
