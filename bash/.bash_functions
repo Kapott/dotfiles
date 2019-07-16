@@ -97,3 +97,7 @@ memtop() {
 realsize() {
   du -shc "$@"
 }
+
+fake_mac_address() {
+	date | md5sum | sed -r 's/(..){3}/\1:/g;s/\s+-$//'
+}
