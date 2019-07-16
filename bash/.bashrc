@@ -12,8 +12,9 @@ shopt -s globstar;
 shopt -s histappend;
 shopt -s cdspell;
 
-# Enable vim-mode in bash
+# Enable vim-mode in bash, but keep Ctrl+L to clear screen
 set -o vi
+bind -m vi-insert "\C-l":clear-screen
 
 # Check if we have an interactive shell
 if [[ $- == *i* ]]; then
