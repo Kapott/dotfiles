@@ -18,6 +18,28 @@ function biggestfiles {
   find "${finddir}" -type f -printf "%s\t%p\n" | sort -r -n | head "${findnum}"
 }
 
+certspotter(){
+	curl -s https://certspotter.com/api/v0/certs\?domain\=$1 \
+		| jq '.[].dns_names[]' \
+		| sed 's/\"//g' \
+		| sed 's/\*\.//g' \
+		| sort -u \
+		| grep $1
+} #h/t Michiel Prins
+
+crtsh(){
+	curl -s https://crt.sh/?q=%.$1  | sed 's/<\/\?[^>]\+>//g' | grep $1
+}
+
+certnmap(){
+	curl https://certspotter.com/api/v0/certs\?domain\=$1 | jq
+	'.[].dns_names[]'\
+		| sed 's/\"//g' | sed 's/\*\.//g' | sort -u | grep $1 \
+		| nmap -T5 -Pn -sS -i
+	- -$
+} #h/t Jobert Abma
+
+
 # Usage:
 # check_process <processname>
 # Checks if a process is running or not
@@ -48,6 +70,10 @@ cputop() {
 datetag() {
   local mod_date="$(stat -c %y ${1} | awk '{print $1}')"
   mv ${1} ${mod_date}_${1}
+}
+
+fake_mac_address() {
+	date | md5sum | sed -r 's/(..){3}/\1:/g;s/\s+-$//'
 }
 
 # Usage: genpass <length (optional, default is 25)>
@@ -98,6 +124,3 @@ realsize() {
   du -shc "$@"
 }
 
-fake_mac_address() {
-	date | md5sum | sed -r 's/(..){3}/\1:/g;s/\s+-$//'
-}
