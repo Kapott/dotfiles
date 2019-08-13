@@ -57,7 +57,8 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+#bindsym $mod+d exec dmenu_run
+bindsym $mod+d exec /home/kapott/bin/dmenu_fix.sh
 
 # split horizontal
 bindsym $mod+Ctrl+$left split h
@@ -102,7 +103,7 @@ set $ws10 "10: "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1; layout tabbed
-bindsym $mod+2 workspace $ws2; layout tabbed
+bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3; layout tabbed
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
@@ -236,6 +237,7 @@ assign [class="Chromium"] $ws1
 assign [class="Code"] $ws3
 assign [class="(?i)vscodium"] $ws3
 assign [class="Eclipse"] $ws3
+assign [class="Atom"] $ws3
 
 # because we have all browsers, tabbed, in window 1 -
 # a default title makes more sense..
@@ -253,5 +255,7 @@ exec sh ~/.fehbg
 # Use parcellite as clipboard manager
 exec --no-startup-id parcellite
 bindsym Mod4+Shift+l exec /home/kapott/bin/i3_lockscreen.sh
-gaps inner 5
+gaps inner 10
 gaps outer 10
+for_window [class=".*"] border pixel 0
+hide_edge_borders both
