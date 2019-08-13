@@ -19,11 +19,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 "-- IDE-like features
+Plugin 'majutsushi/tagbar'
+Plugin 'universal-ctags/ctags'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'majutsushi/tagbar'
-Plugin 'universal-ctags/ctags'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
@@ -153,7 +153,6 @@ augroup END
 
 "--- Plugin: Tagbar
 nnoremap <Leader>tt :Tagbar<CR>
-autocmd FileType * :call tagbar#autoopen(0)
 
 "--- Plugin: Fugitive
 nnoremap <Leader>gc :Gcommit %<CR>
