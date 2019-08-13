@@ -28,7 +28,7 @@ certspotter(){
 } #h/t Michiel Prins
 
 crtsh(){
-	curl -s https://crt.sh/?q=%.$1  | sed 's/<\/\?[^>]\+>//g' | grep $1
+	curl -m 9000 -s "https://crt.sh/?q=%$1"  | sed 's/<\/\?[^>]\+>//g' | grep $1
 }
 
 certnmap(){
@@ -90,6 +90,10 @@ gpg_agent_start() {
   fi
 }
 
+ipinfo() {
+	curl http://ipinfo.io/$1
+}
+
 # Usage: killport <portnum>
 # Kills the process running on port <portnum>
 killport() {
@@ -124,3 +128,14 @@ realsize() {
   du -shc "$@"
 }
 
+# tunnelfrom tunnels a remote port to the local machine
+# be sure to set up your keys and other settings in your ~/.ssh/config
+# (e.g. non-standard ports, hostnames etc)
+#
+# use: tunnelfrom remote.host.com:9999 (will forward to localhost 9999)
+#
+tunnelfrom() {
+ local hostname=$(echo $1 | cut -d':' -f1)
+ local portnum=$(echo $1 | cut -d':' -f2)
+ ssh -fNL $portnum:127.0.0.1:$portnum $hostname
+}
