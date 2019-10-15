@@ -12,6 +12,10 @@ shopt -s globstar;
 shopt -s histappend;
 shopt -s cdspell;
 
+# Enable vim-mode in bash, but keep Ctrl+L to clear screen
+set -o vi
+bind -m vi-insert "\C-l":clear-screen
+
 # Check if we have an interactive shell
 if [[ $- == *i* ]]; then
 	stty -ixon 	# Disable START/STOP output control with ctrl-s and ctrl-q
@@ -51,7 +55,3 @@ xterm*|rxvt*)
 *)
     ;;
 esac
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

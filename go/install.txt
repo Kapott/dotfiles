@@ -1,0 +1,7 @@
+  go get github.com/ericchiang/pup
+  go get github.com/tomnomnom/waybackurls
+  go get github.com/tomnomnom/meg
+  go get github.com/tomnomnom/assetfinder
+  go get github.com/tomnomnom/httprobe
+  go get github.com/tomnomnom/unfurl
+

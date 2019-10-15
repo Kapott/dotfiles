@@ -18,6 +18,28 @@ function biggestfiles {
   find "${finddir}" -type f -printf "%s\t%p\n" | sort -r -n | head "${findnum}"
 }
 
+certspotter(){
+	curl -s https://certspotter.com/api/v0/certs\?domain\=$1 \
+		| jq '.[].dns_names[]' \
+		| sed 's/\"//g' \
+		| sed 's/\*\.//g' \
+		| sort -u \
+		| grep $1
+} #h/t Michiel Prins
+
+crtsh(){
+	curl -m 9000 -s "https://crt.sh/?q=%$1"  | sed 's/<\/\?[^>]\+>//g' | grep $1
+}
+
+certnmap(){
+	curl https://certspotter.com/api/v0/certs\?domain\=$1 | jq
+	'.[].dns_names[]'\
+		| sed 's/\"//g' | sed 's/\*\.//g' | sort -u | grep $1 \
+		| nmap -T5 -Pn -sS -i
+	- -$
+} #h/t Jobert Abma
+
+
 # Usage:
 # check_process <processname>
 # Checks if a process is running or not
@@ -50,6 +72,10 @@ datetag() {
   mv ${1} ${mod_date}_${1}
 }
 
+fake_mac_address() {
+	date | md5sum | sed -r 's/(..){3}/\1:/g;s/\s+-$//'
+}
+
 # Usage: genpass <length (optional, default is 25)>
 # Generate a password using openssl rand
 genpass() {
@@ -62,6 +88,10 @@ gpg_agent_start() {
     gpg-agent --daemon
     check_process gpg-agent
   fi
+}
+
+ipinfo() {
+	curl http://ipinfo.io/$1
 }
 
 # Usage: killport <portnum>
@@ -96,4 +126,16 @@ memtop() {
 # the last full backup, and the current state.
 realsize() {
   du -shc "$@"
+}
+
+# tunnelfrom tunnels a remote port to the local machine
+# be sure to set up your keys and other settings in your ~/.ssh/config
+# (e.g. non-standard ports, hostnames etc)
+#
+# use: tunnelfrom remote.host.com:9999 (will forward to localhost 9999)
+#
+tunnelfrom() {
+ local hostname=$(echo $1 | cut -d':' -f1)
+ local portnum=$(echo $1 | cut -d':' -f2)
+ ssh -fNL $portnum:127.0.0.1:$portnum $hostname
 }

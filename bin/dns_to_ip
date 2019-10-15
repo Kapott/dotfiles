@@ -1,0 +1,24 @@
+#!/bin/env bash
+
+if [ ! -f ${1} ]; then
+  printf "Usage: $0 <file_with_domainnames>"
+  exit 1;
+fi
+
+iplookup() {
+  local domain=$1
+  local ip=$(dig +short ${domain} | grep '^[.0-9]*$')
+  if [ ! -z "$ip" ]; then
+    printf '%s\n' ${ip}
+  fi
+}
+
+paralleltasks=5
+i=0
+while IFS= read -r line; do
+	if (( i++ >= paralleltasks )); then
+		wait -n
+	fi
+	iplookup "$line" &
+done < $1
+wait

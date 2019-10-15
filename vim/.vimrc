@@ -19,11 +19,11 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
 "-- IDE-like features
+Plugin 'majutsushi/tagbar'
+Plugin 'universal-ctags/ctags'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'majutsushi/tagbar'
-Plugin 'universal-ctags/ctags'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-surround'
 Plugin 'w0rp/ale'
@@ -39,9 +39,6 @@ Plugin 'tomtom/tlib_vim'
 "-- Snippets
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
-"
-"-- Text/markdown plugins
-Plugin 'vim-scripts/todo-txt.vim'
 
 "-- Javascript / Ecmascript / Typescript
 Plugin 'isRuslan/vim-es6'
@@ -103,6 +100,9 @@ nnoremap tx :tabclose<CR>
 "--- Toggle invisible chars (t)oggle (i)nvisible
 nnoremap <Leader>ti :set list!<CR>
 
+"--- Abbreviation list (wip)
+iab <expr> dts strftime("%F")
+
 "--- Spaces, and tabs and files - oh my!
 " ts = width of tab
 " sw = amount of columns to indent with >> or <<
@@ -153,7 +153,6 @@ augroup END
 
 "--- Plugin: Tagbar
 nnoremap <Leader>tt :Tagbar<CR>
-autocmd FileType * nested :call tagbar#autoopen(0)
 
 "--- Plugin: Fugitive
 nnoremap <Leader>gc :Gcommit %<CR>
@@ -180,6 +179,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
+let g:syntastic_python_pytlint_args = "--load-plugins pylint_django"
 
 "--- Plugin: Airline
 if !exists('g:airline_symbols')
