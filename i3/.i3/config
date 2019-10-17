@@ -3,6 +3,9 @@
 
 # Configure modifier (Mod1 = Alt, Mod4 = Windows key)
 set $mod Mod1
+set $alt Mod1
+set $super Mod4
+set $altGr Mod5
 
 # Color scheme
 set $red #c00000
@@ -15,7 +18,7 @@ set $green #A6E22E
 set $orange #fd971f
 
 # Font definition
-font pango:Hack 8
+font pango:Terminus 8
 
 # Set up VIM-like controls
 set $up k
@@ -57,8 +60,7 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec /home/kapott/bin/dmenu_fix.sh
+bindsym $mod+d exec dmenu_run
 
 # split horizontal
 bindsym $mod+Ctrl+$left split h
@@ -90,21 +92,21 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+set $ws1 "1/web"
+set $ws2 "2/term"
+set $ws3 "3/ide"
+set $ws4 "4/file"
+set $ws5 "5/todo"
+set $ws6 "6/mail"
+set $ws7 "7/msg"
+set $ws8 "8/tor"
+set $ws9 "9/time"
+set $ws10 "10/misc"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1; layout tabbed
+bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3; layout tabbed
+bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
@@ -147,16 +149,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym $left       resize shrink width 10 px or 10 ppt
+        bindsym $right       resize shrink width 10 px or 10 ppt
         bindsym $down       resize grow height 10 px or 10 ppt
         bindsym $up         resize shrink height 10 px or 10 ppt
-        bindsym $right      resize grow width 10 px or 10 ppt
+        bindsym $left      resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left        resize shrink width 10 px or 10 ppt
+        bindsym Right        resize shrink width 10 px or 10 ppt
         bindsym Down        resize grow height 10 px or 10 ppt
         bindsym Up          resize shrink height 10 px or 10 ppt
-        bindsym Right       resize grow width 10 px or 10 ppt
+        bindsym Left       resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or Mod1+r
         bindsym Return mode "default"
@@ -176,7 +178,7 @@ client.background	$black
 # i3bar config
 bar {
   status_command i3status
-  font pango:Hack 8, Awesome 8
+  font pango:Terminus 8, Awesome 8
   position top
   modifier $mod
   separator_symbol " • "
@@ -238,6 +240,8 @@ assign [class="Code"] $ws3
 assign [class="(?i)vscodium"] $ws3
 assign [class="Eclipse"] $ws3
 assign [class="Atom"] $ws3
+assign [class="Org.gnome.Nautilus"] $ws4
+assign [class="Thunderbird"] $ws6
 
 # because we have all browsers, tabbed, in window 1 -
 # a default title makes more sense..
@@ -246,16 +250,20 @@ for_window [class="(?i)Brave"] title_format "Brave"
 for_window [class="(?i)google-chrome"] title_format "Chrome"
 for_window [class="(?i)Chromium"] title_format "Chromium"
 
-# remap escape and ctrl for vim
-exec xmodmap ~/.Xmodmap
-
-# Execute last 'feh --bg-fill' command which was set..
-exec sh ~/.fehbg
-
-# Use parcellite as clipboard manager
-exec --no-startup-id parcellite
-bindsym Mod4+Shift+l exec /home/kapott/bin/i3_lockscreen.sh
 gaps inner 10
 gaps outer 10
 for_window [class=".*"] border pixel 0
 hide_edge_borders both
+
+# Script bindings
+bindsym Mod4+Shift+l exec /home/kapott/bin/i3_lockscreen.sh
+exec sh ~/.fehbg
+exec xmodmap ~/.Xmodmap
+
+# Application bindings
+bindsym $alt+Control+b exec --no-startup-id firefox --ProfileManager
+bindsym $alt+Control+m exec --no-startup-id thunderbird
+bindsym $super+e exec --no-startup-id nautilus -w $HOME
+
+# Layout loading script (loads json files into workspaces)
+exec --no-startup-id /home/kapott/.i3/startup.sh
