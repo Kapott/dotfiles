@@ -90,21 +90,21 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+set $ws1 "1/web"
+set $ws2 "2/con"
+set $ws3 "3/ide"
+set $ws4 "4/pln"
+set $ws5 "5/mus"
+set $ws6 "6/mail"
+set $ws7 "7/msg"
+set $ws8 "8/fm"
+set $ws9 "9/tor"
+set $ws10 "10/vpn"
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1; layout tabbed
+bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3; layout tabbed
+bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
@@ -223,9 +223,6 @@ workspace_auto_back_and_forth yes
 # fullscreen popup window behaviour
 popup_during_fullscreen smart
 
-# dont strip workspace numbers
-# strip_workspace_numbers no
-
 bindsym $mod+bracketright layout toggle stacking tabbed
 bindsym $mod+bracketleft layout toggle splith splitv
 
@@ -238,6 +235,7 @@ assign [class="Code"] $ws3
 assign [class="(?i)vscodium"] $ws3
 assign [class="Eclipse"] $ws3
 assign [class="Atom"] $ws3
+assign [class="Thunderbird"] $ws6
 
 # because we have all browsers, tabbed, in window 1 -
 # a default title makes more sense..
