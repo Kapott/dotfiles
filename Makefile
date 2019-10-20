@@ -20,6 +20,7 @@ dotfiles: scripts
 
 	# Xorg settings
 	ln -vsfn ${PWD}/xorg/.Xmodmap ${HOME}/.Xmodmap # remaps capslock and escape
+	ln -vsfn ${PWD}/xorg/.Xresources ${HOME}/.Xresources
 
 	# Misc
 	ln -vsfn ${PWD}/git/.gitconfig ${HOME}/.gitconfig
@@ -35,7 +36,7 @@ ubuntu:
 		bash vim-gtk autoconf curl git tmux build-essential ffmpeg youtube-dl \
 		python3-pip python3-venv libssl-dev pigz jq ranger meld pkg-config \
 		net-tools lm-sensors libsecret-1-0 libsecret-1-dev global p7zip-full \
-		peek flameshot scrot xdotool wmctrl fonts-font-awesome
+		peek flameshot scrot xdotool wmctrl fonts-font-awesome rofi
 	sudo snap install nmap
 
 .PHONY: yarn
