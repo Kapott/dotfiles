@@ -53,7 +53,6 @@ syntax on
 colorscheme molokai
 set background=dark
 set backspace=indent,eol,start
-
 "--- Text wrapping & line length
 set colorcolumn=81
 set textwidth=80
@@ -180,7 +179,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_pytlint_args = "--load-plugins pylint_django"
-
+let g:syntastic_python_pylint_args = "--load-plugins pylint_django"
 "--- Plugin: Airline
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}

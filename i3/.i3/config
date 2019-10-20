@@ -226,9 +226,6 @@ workspace_auto_back_and_forth yes
 # fullscreen popup window behaviour
 popup_during_fullscreen smart
 
-# dont strip workspace numbers
-# strip_workspace_numbers no
-
 bindsym $mod+bracketright layout toggle stacking tabbed
 bindsym $mod+bracketleft layout toggle splith splitv
 
