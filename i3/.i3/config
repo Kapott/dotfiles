@@ -62,6 +62,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec rofi -show run
+bindsym $mod+s exec rofi -show ssh
 
 # split horizontal
 bindsym $mod+Ctrl+$left split h
@@ -75,9 +76,9 @@ bindsym $mod+Ctrl+$down split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+p layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+t layout tabbed
+#bindsym $mod+p layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
