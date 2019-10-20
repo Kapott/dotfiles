@@ -2,6 +2,6 @@
 ! for more consistent capslock behaviour
 ! (tweaks->keyboard&mouse->additional layout options->caps-lock key behaviour)
 
-!clear lock
-!keycode 9 = Caps_Lock NoSymbol Caps_Lock
-!keycode 66 = Escape NoSymbol Escape
+clear lock
+!;Wkeycode 9 = Caps_Lock NoSymbol Caps_Lock
+keycode 66 = Escape NoSymbol Escape
