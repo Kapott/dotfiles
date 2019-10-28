@@ -52,14 +52,7 @@ bindsym $mod+Shift+Right move right
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
-
-# start a terminal
-bindsym $mod+Return exec gnome-terminal
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
+# start a terminal bindsym $mod+Return exec gnome-terminal # kill focused window bindsym $mod+Shift+q kill # start dmenu (a program launcher)
 # bindsym $mod+d exec dmenu_run
 bindsym $mod+d exec rofi -show run
 bindsym $mod+s exec rofi -show ssh
@@ -103,7 +96,7 @@ set $ws6 "6/mail"
 set $ws7 "7/msg"
 set $ws8 "8/tor"
 set $ws9 "9/time"
-set $ws10 "10/misc"
+set $ws10 "10/game"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -117,10 +110,10 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-bindsym Mod4+k move workspace to output down
-bindsym Mod4+j move workspace to output up
-bindsym Mod4+h move workspace to output left
-bindsym Mod4+l move workspace to output right
+bindsym $super+k move workspace to output down
+bindsym $super+j move workspace to output up
+bindsym $super+h move workspace to output left
+bindsym $super+l move workspace to output right
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
