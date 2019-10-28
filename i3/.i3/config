@@ -258,7 +258,9 @@ exec xmodmap ~/.Xmodmap
 bindsym $alt+Control+b exec --no-startup-id firefox --ProfileManager
 bindsym $alt+Control+m exec --no-startup-id thunderbird
 bindsym $super+e exec --no-startup-id nautilus -w $HOME
-bindsym $super+z exec --no-startup-id scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/'
+bindsym --release Shift+Print exec scrot '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'
+bindsym --release Print exec scrot -s '%Y-%m-%d_$wx$h.png' -e 'mv $f ~/Pictures/Screenshots'
+
 
 # Layout loading script (loads json files into workspaces)
 exec --no-startup-id /home/kapott/.i3/startup.sh
