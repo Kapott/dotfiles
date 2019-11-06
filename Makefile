@@ -28,7 +28,7 @@ dotfiles: scripts
 
 .PHONY: scripts
 scripts:
-	rsync -avh ${PWD}/bin/* ${HOME}/bin
+	ln -vsfn ${PWD}/bin/* ${HOME}/bin
 
 .PHONY: ubuntu
 ubuntu:
