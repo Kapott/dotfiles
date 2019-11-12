@@ -40,6 +40,11 @@ ubuntu:
 		peek flameshot scrot xdotool wmctrl fonts-font-awesome rofi
 	sudo snap install nmap
 
+
+.PHONY: fedora
+fedora:
+	sudo dnf install bash vim feh xdotool fontawesome-fonts rofi terminus-fonts
+
 .PHONY: yarn
 yarn:
 	# Note that yarn is, atm, debian/ubuntu specific
