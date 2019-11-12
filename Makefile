@@ -28,6 +28,7 @@ dotfiles: scripts
 
 .PHONY: scripts
 scripts:
+	test -d ${HOME}/bin || mkdir -p ${HOME}/bin
 	ln -vsfn ${PWD}/bin/* ${HOME}/bin
 
 .PHONY: ubuntu
