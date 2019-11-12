@@ -43,7 +43,8 @@ ubuntu:
 
 .PHONY: fedora
 fedora:
-	sudo dnf install bash vim feh xdotool fontawesome-fonts rofi terminus-fonts
+	sudo dnf install bash vim feh xdotool fontawesome-fonts rofi terminus-fonts \
+		scrot ImageMagick
 
 .PHONY: yarn
 yarn:
