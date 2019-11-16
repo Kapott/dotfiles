@@ -28,10 +28,17 @@ certspotter(){
 } #h/t Michiel Prins
 
 crtsh(){
-	curl -m 9000 \
-		-s "https://crt.sh/?q=%$1" | \
+	set +x
+	local grep_domain
+	grep_domain=$(echo $1 | sed "s/\%.*\%//g" | sed "s/\%//g")
+	curl \
+		-G \
+		-m 9000 \
+		-s \
+		--data-urlencode "q=$1" \
+		"https://crt.sh/" | \
 		sed 's/<\/\?[^>]\+>//g' | \
-		grep $1 | \
+		grep $grep_domain | \
 		grep -v 'LIKE' | \
 		grep -v 'crt.sh | %' | \
 		tr -d ' '
@@ -94,6 +101,19 @@ gpg_agent_start() {
     gpg-agent --daemon
     check_process gpg-agent
   fi
+}
+
+host2ips() {
+  input="$1"
+  if [ ! -f "${1}" ]; then
+    echo "File not found: $1"
+  	exit 1;
+  fi
+
+  while IFS= read -r line
+  do
+  	getent hosts "$line" | awk '{ print $1 }'
+  done < "$input"
 }
 
 ipinfo() {
