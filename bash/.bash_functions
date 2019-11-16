@@ -84,6 +84,14 @@ datetag() {
   mv ${1} ${mod_date}_${1}
 }
 
+dotreverse() {
+	if [ -f "$1" ]; then
+		cat $1 | perl -lpe '$_ = join ".", reverse split /\./;'
+	else
+		echo $1 | perl -lpe '$_ = join ".", reverse split /\./;'
+	fi
+}
+
 fake_mac_address() {
 	date | md5sum | sed -r 's/(..){3}/\1:/g;s/\s+-$//'
 }
