@@ -28,7 +28,6 @@ certspotter(){
 } #h/t Michiel Prins
 
 crtsh(){
-	set +x
 	local grep_domain
 	grep_domain=$(echo $1 | sed "s/\%.*\%//g" | sed "s/\%//g")
 	curl \
