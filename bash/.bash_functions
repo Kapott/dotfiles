@@ -28,7 +28,13 @@ certspotter(){
 } #h/t Michiel Prins
 
 crtsh(){
-	curl -m 9000 -s "https://crt.sh/?q=%$1"  | sed 's/<\/\?[^>]\+>//g' | grep $1
+	curl -m 9000 \
+		-s "https://crt.sh/?q=%$1" | \
+		sed 's/<\/\?[^>]\+>//g' | \
+		grep $1 | \
+		grep -v 'LIKE' | \
+		grep -v 'crt.sh | %' | \
+		tr -d ' '
 }
 
 certnmap(){
