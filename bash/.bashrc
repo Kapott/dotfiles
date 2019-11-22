@@ -29,6 +29,10 @@ do
 done;
 unset file;
 
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi
+
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
