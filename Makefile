@@ -28,7 +28,8 @@ dotfiles: scripts
 
 .PHONY: scripts
 scripts:
-	rsync -avh ${PWD}/bin/* ${HOME}/bin
+	test -d ${HOME}/bin || mkdir -p ${HOME}/bin
+	ln -vsfn ${PWD}/bin/* ${HOME}/bin
 
 .PHONY: ubuntu
 ubuntu:
@@ -38,6 +39,12 @@ ubuntu:
 		net-tools lm-sensors libsecret-1-0 libsecret-1-dev global p7zip-full \
 		peek flameshot scrot xdotool wmctrl fonts-font-awesome rofi
 	sudo snap install nmap
+
+
+.PHONY: fedora
+fedora:
+	sudo dnf install bash vim feh xdotool fontawesome-fonts rofi terminus-fonts \
+		scrot ImageMagick
 
 .PHONY: yarn
 yarn:

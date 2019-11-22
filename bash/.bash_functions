@@ -28,7 +28,19 @@ certspotter(){
 } #h/t Michiel Prins
 
 crtsh(){
-	curl -m 9000 -s "https://crt.sh/?q=%$1"  | sed 's/<\/\?[^>]\+>//g' | grep $1
+	local grep_domain
+	grep_domain=$(echo $1 | sed "s/\%.*\%//g" | sed "s/\%//g")
+	curl \
+		-G \
+		-m 9000 \
+		-s \
+		--data-urlencode "q=$1" \
+		"https://crt.sh/" | \
+		sed 's/<\/\?[^>]\+>//g' | \
+		grep $grep_domain | \
+		grep -v 'LIKE' | \
+		grep -v 'crt.sh | %' | \
+		tr -d ' '
 }
 
 certnmap(){
@@ -72,6 +84,14 @@ datetag() {
   mv ${1} ${mod_date}_${1}
 }
 
+dotreverse() {
+	if [ -f "$1" ]; then
+		cat $1 | perl -lpe '$_ = join ".", reverse split /\./;'
+	else
+		echo $1 | perl -lpe '$_ = join ".", reverse split /\./;'
+	fi
+}
+
 fake_mac_address() {
 	date | md5sum | sed -r 's/(..){3}/\1:/g;s/\s+-$//'
 }
@@ -88,6 +108,19 @@ gpg_agent_start() {
     gpg-agent --daemon
     check_process gpg-agent
   fi
+}
+
+host2ips() {
+  input="$1"
+  if [ ! -f "${1}" ]; then
+    echo "File not found: $1"
+  	exit 1;
+  fi
+
+  while IFS= read -r line
+  do
+  	getent hosts "$line" | awk '{ print $1 }'
+  done < "$input"
 }
 
 ipinfo() {

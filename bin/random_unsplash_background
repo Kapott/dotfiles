@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-wget -O /tmp/wallpaper.jpg https://unsplash.it/1600/900/?random
+wget -O /tmp/wallpaper.jpg https://unsplash.it/1920/1080/?random
 gsettings set org.gnome.desktop.background picture-uri file:///tmp/wallpaper.jpg
+feh --bg-scale /tmp/wallpaper.jpg
