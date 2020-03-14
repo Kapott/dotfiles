@@ -1,11 +1,52 @@
 #!/usr/bin/env bash
-installing() {
-	printf "%s: %s...\n" "Installing" "${1}"
+
+####################################
+# Installs some tools I use often. #
+####################################
+
+
+main() {
+	local urls build_from_source i j
+
+	[ ! -d "${HOME}/bin" ] && mkdir -p "${HOME}/bin" && printf "%s\n" "Script had to create ~/bin -- check if it's in your \$PATH"
+
+	urls=( 
+		"https://github.com/ffuf/ffuf/releases/download/v1.0.2/ffuf_1.0.2_linux_amd64.tar.gz"
+		"https://github.com/OJ/gobuster/releases/download/v3.0.1/gobuster-linux-amd64.7z"
+		"https://github.com/tomnomnom/httprobe/releases/download/v0.1.2/httprobe-linux-amd64-0.1.2.tgz"
+		"https://github.com/tomnomnom/meg/releases/download/v0.2.4/meg-linux-amd64-0.2.4.tgz"
+		"https://github.com/tomnomnom/waybackurls/releases/download/v0.0.2/waybackurls-linux-amd64-0.0.2.tgz"
+		"https://github.com/tomnomnom/assetfinder/releases/download/v0.1.0/assetfinder-linux-amd64-0.1.0.tgz"
+	)
+
+	build_from_source=(
+		"https://github.com/robertdavidgraham/masscan.git"
+	)
+
+	printf "%s\n" "Getting and installing tools from:"
+	for i in "${urls[@]}"
+	do 
+		printf "\t-> %s\n" "${i}"
+		dl=$(get_and_extract "${i}")
+		find "${dl}" -type f -executable -exec mv -t "${HOME}/bin/" {} +
+		rm -rf "${dl}"
+	done
+
+	printf "%s\n" "Cloning, compiling and installing tools from:"
+	for j in "${build_from_source[@]}"
+	do
+		printf "\t-> %s\n" "${j}"
+		tempdir=$(mktemp -d)
+		git clone "${j}" "${tempdir}" > /dev/null 2>&1
+		(cd "${tempdir}" && make -j > /dev/null 2>&1);
+		find "${tempdir}" -type f -executable -size +1M -exec mv -t "${HOME}/bin/" {} +
+		rm -rf "${tempdir}"
+	done
 }
 
 download_archive() {
 	tempfile=$(mktemp)
-	wget --max-redirect 2 -O "${tempfile}" "${1}"
+	wget -q --max-redirect 2 -O "${tempfile}" "${1}"
 	printf "%s" "${tempfile}" 
 }
 
@@ -15,13 +56,16 @@ filename_from_url() {
 	printf "%s" "${filetype}"
 }
 
-# extract original_filename downloaded_filename
+# syntax: extract url_with_filname_ext downloaded_tempfile_name
 extract() {
 	tempdir=$(mktemp -d)
 	filename_from_url="${1}"
 	tempfile="${2}"
 	case "${filename_from_url}" in
 		*.tar.gz)
+			tar -xzvf "${tempfile}" -C "${tempdir}" > /dev/null 2>&1
+		;;
+		*.tgz)
 			tar -xzvf "${tempfile}" -C "${tempdir}" > /dev/null 2>&1
 		;;
 		*.7z)
@@ -34,13 +78,13 @@ extract() {
 			unrar x "${tempfile}" "${tempdir}" > /dev/null 2>&1
 		;;
 		*)
-			printf "%s\n" "Impossibru!!1"
+			printf "%s\n" "Impossibru!!1" #could expand this with a function which uses 'file' to determine filetype.
 		;;
 	esac
 	printf "%s" "${tempdir}" #return where the extracted files are
 }
 
-# usage 'magic https://my.url/filename.ext'
+# syntax: get_and_extract url_with_filename_ext
 get_and_extract() {
 	local tempfile origfile outputdir
 	tempfile=$(download_archive "${1}")
@@ -49,38 +93,4 @@ get_and_extract() {
 	printf "%s" "${outputdir}"
 }
 
-download() {
-	local tempdir
-	tempdir=$(get_and_extract "${1}")
-	printf "%s" "${tempdir}"
-}
-
-# get ffuf
-ffuf() {
-	local url tempdir
-	url='https://github.com/ffuf/ffuf/releases/download/v1.0.2/ffuf_1.0.2_linux_amd64.tar.gz'
-	tempdir=$(download "${url}")
-	
-	#archive specific operations
-	mv "${tempdir}/ffuf" "${HOME}/bin/"
-
-	#cleanup
-	rm -rf "${tempdir}/"
-}
-
-# get gobuster
-gobuster() {
-	local url tempdir
-	url='https://github.com/OJ/gobuster/releases/download/v3.0.1/gobuster-linux-amd64.7z'
-	tempdir=$(download "${url}")
-	
-	# archive specific operations
-	mv "${tempdir}/gobuster-linux-amd64/gobuster" "${HOME}/bin/"
-	chmod 700 "${HOME}/bin/gobuster"
-
-	#cleanup
-	rm -rf "${tempdir}/"
-}
-
-ffuf
-gobuster
+main
