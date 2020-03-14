@@ -38,7 +38,7 @@ ubuntu:
 		python3-pip python3-venv libssl-dev pigz jq ranger meld pkg-config \
 		net-tools lm-sensors libsecret-1-0 libsecret-1-dev global p7zip-full \
 		flameshot scrot xdotool wmctrl fonts-font-awesome rofi \
-		gcc make libpcap-dev
+		gcc make libpcap-dev shellcheck
 	sudo snap install nmap
 
 
