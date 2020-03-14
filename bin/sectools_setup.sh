@@ -45,12 +45,16 @@ main() {
 }
 
 download_archive() {
+	local tempfile
+	
 	tempfile=$(mktemp)
 	wget -q --max-redirect 2 -O "${tempfile}" "${1}"
 	printf "%s" "${tempfile}" 
 }
 
 filename_from_url() {
+	local url filetype
+
 	url="${1}"
 	filetype=$(echo "$url" | rev | cut -d'/' -f1 | rev)
 	printf "%s" "${filetype}"
@@ -58,6 +62,8 @@ filename_from_url() {
 
 # syntax: extract url_with_filname_ext downloaded_tempfile_name
 extract() {
+	local tempdir filename_from_url tempfile
+
 	tempdir=$(mktemp -d)
 	filename_from_url="${1}"
 	tempfile="${2}"
@@ -87,6 +93,7 @@ extract() {
 # syntax: get_and_extract url_with_filename_ext
 get_and_extract() {
 	local tempfile origfile outputdir
+	
 	tempfile=$(download_archive "${1}")
 	origfile=$(filename_from_url "${1}")
 	outputdir=$(extract "${origfile}" "${tempfile}")
