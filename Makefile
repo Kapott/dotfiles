@@ -37,7 +37,8 @@ ubuntu:
 		bash vim-gtk autoconf curl git tmux build-essential ffmpeg youtube-dl \
 		python3-pip python3-venv libssl-dev pigz jq ranger meld pkg-config \
 		net-tools lm-sensors libsecret-1-0 libsecret-1-dev global p7zip-full \
-		flameshot scrot xdotool wmctrl fonts-font-awesome rofi
+		flameshot scrot xdotool wmctrl fonts-font-awesome rofi \
+		gcc make libpcap-dev
 	sudo snap install nmap
 
 
