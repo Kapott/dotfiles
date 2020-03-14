@@ -7,7 +7,8 @@
 ###
 
 main() {
-  local file=$(check_args "$@")
+  local file
+  file=$(check_args "$@")
   [[ $file == "1" ]] \
 	  && echo "Could not find input file, or file does not exist" \
 	  && exit 1
