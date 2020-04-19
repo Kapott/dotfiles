@@ -74,6 +74,9 @@ set vb
 set noeb
 set laststatus=2
 
+"--- Yank to, and paste from system clipboard
+set clipboard=unnamed
+
 "--- Split handling & navigation
 set splitbelow
 set splitright
