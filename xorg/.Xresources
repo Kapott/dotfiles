@@ -3,3 +3,6 @@ rofi.show-icons: true
 rofi.terminal: gnome-terminal
 rofi.ssh-client:           ssh
 rofi.ssh-command:          {terminal} -e {ssh-client} {host}
+
+xterm*selectToClipboard: true
+xterm*disallowedWindowOps: 20,21,SetXProp
