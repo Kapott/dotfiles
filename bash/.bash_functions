@@ -18,12 +18,12 @@ function biggestfiles {
   find "${finddir}" -type f -printf "%s\t%p\n" | sort -r -n | head "${findnum}"
 }
 
-# Fuzzy change dir - this is so I can do something like this:
-# ccd w b ta
+# Fuzzy/wildcard/glob change dir - this is so I can do something like this:
+# ccd ~/w b ta
 # and it will take me to
 # /home/kapott/work/byteherder/todo_app
 ccd() {
-	cd $(xd $*)
+	cd $(xd $*) || exit
 }
 
 certspotter(){
