@@ -169,6 +169,10 @@ realsize() {
   du -shc "$@"
 }
 
+# Reverse $1 by seperator $2. Great for reversing DNS names, for instance
+reverse() {
+  tr "${2}" $'\n' <<< "${1}" | tac | paste -s -d "${2}"
+}
 # tunnelfrom tunnels a remote port to the local machine
 # be sure to set up your keys and other settings in your ~/.ssh/config
 # (e.g. non-standard ports, hostnames etc)
