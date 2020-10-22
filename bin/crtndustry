@@ -9,6 +9,8 @@ if [ ! -x "$(command -v jq)" ]; then
 	exit 1
 fi
 
+mkdir -p rawdata
+
 certdata(){
 	#give it patterns to look for within crt.sh for example %api%.site.com
 	declare -a arr=("api" "corp" "dev" "uat" "test" "stag" "sandbox" "prod" "internal")

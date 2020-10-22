@@ -23,6 +23,14 @@ main() {
 		"https://github.com/robertdavidgraham/masscan.git"
 	)
 
+	lists_git=(
+		"https://github.com/danielmiessler/SecLists"
+	)
+
+	lists_raw=(
+		"https://gist.github.com/jhaddix/f64c97d0863a78454e44c2f7119c2a6a/raw/96f4e51d96b2203f19f6381c8c545b278eaa0837/all.txt"
+	)
+
 	printf "%s\n" "Getting and installing tools from:"
 	for i in "${urls[@]}"
 	do 
@@ -41,6 +49,23 @@ main() {
 		(cd "${tempdir}" && make -j > /dev/null 2>&1);
 		find "${tempdir}" -type f -executable -size +1M -exec mv -t "${HOME}/bin/" {} +
 		rm -rf "${tempdir}"
+	done
+
+	printf "%s\n" "Cloning list repositories:"
+	mkdir -p $HOME/lists
+	for k in "${lists_git[@]}"
+	do
+		printf "\t-> %s\n" "${k}"
+		git clone "${k}" "$HOME/lists" > /dev/null 2>&1
+	done
+
+	printf "%s\n" "Grabbing raw txt lists:"
+	for l in "${lists_raw[@]}"
+	do
+		printf "\t-> %s\n" "${l}"
+		filename=$(filename_from_url "${l}")
+		wget -q --max-redirect 2 -O "$HOME/lists/${filename}" "${l}"
+
 	done
 }
 
