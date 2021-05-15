@@ -2,6 +2,8 @@
 
 The dotfiles I use on my day-to-day development machines and VM's.
 
+    2021-05-14 :: Edit - Going to ansible the hell out of this. More reliable and plyable.
+
 Just clone it anywhere (I use ~/.dotfiles), `cd` into the directory and run any of the `make`
 commands listed below. (I used to use GNU Stow to manage my dotfiles, but have since switched to
 abusing `make`, since I want to be even lazier when setting up my machines and `make` allows me to
