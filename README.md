@@ -3,7 +3,7 @@
 I've gone over a lot of iterations with regard to storing dotfiles. At one time I even wanted
 to use ansible! Yeah, rabbit holes - I have this strange grativation towards them.
 
-Anyway, this tiem we're super-pragmatic, right? We just want settings.
+Anyway, this time we're super-pragmatic, right? We just want settings.
 But hey, I work on multiple types of systems, so this needs to work on desktops
 and servers.
 
