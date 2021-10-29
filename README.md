@@ -19,9 +19,7 @@ So I sobered up and though "Let's do this the sane person style".
 And so I ended up back with GNU Stow. With a little, pragmatic, twist.
 
 And another one.
-
 And another one.
-
 Oh, I bet you know where this is going..
 
 > "Would you tell me, please, which way I ought to go from here?"
