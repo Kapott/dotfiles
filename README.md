@@ -3,24 +3,27 @@
 I've gone over a lot of iterations with regard to storing dotfiles. At one time I even wanted
 to use ansible! Yeah, rabbit holes - I have this strange grativation towards them.
 
-Anyway! Let's be pragmatic about this. I just want settings, but I work on multiple types
-of systems. Macos, *buntu, alpine, centos, *BSD, WSL2 etc.
+Anyway, this tiem we're super-pragmatic, right? We just want settings.
+But hey, I work on multiple types of systems, so this needs to work on desktops
+and servers.
 
-So, as you might imagine, maintaining my settings is a bit of a nightmare. I almost used ansible
-with some fancy "when" syntax to do everything for me. Until I cloned the repository.
+And ofcourse on
+- macos
+- *buntu
+- alpine
+- centos
+- rhel
+- *BSD
+- WSL2
+- cygwin.
 
-And it's name juxtaposed to my intended actions made my think-organ itch.
-
-`dotfiles`
-
-Configuration files. Not "platform independent application installation and customization files".
-So I sobered up and though "Let's do this the sane person style".
-
-And so I ended up back with GNU Stow. With a little, pragmatic, twist.
+And so I ended up back with GNU Stow. And I added a little, pragmatic, twist.
 
 And another one.<br>
 And another one.<br>
-Oh, I bet you know where this is going..<br>
+And another one.<br>
+And another one.<br>
+Oh, I bet you know where this is going..<br><br>
 
 
 > "Would you tell me, please, which way I ought to go from here?"<br>
