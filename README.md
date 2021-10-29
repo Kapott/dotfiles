@@ -1,6 +1,6 @@
 # dotfiles
 
-I've gone over a lot of iterations with regard to storing dotfiles. At one time I even wanted
+I've gone over a lot of iterations with regards to storing dotfiles. At one time I even wanted
 to use ansible! Yeah, rabbit holes - I have this strange grativation towards them.
 
 Anyway, this time we're super-pragmatic, right? We just want settings.
