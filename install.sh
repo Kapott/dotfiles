@@ -7,7 +7,7 @@ main () {
 
 	# Optionally execute an installer for this platform
 	if test -f "$HOME/.installed"; then
-		read -p "Installation detected. Reinstall? " -n 1 -r
+		read -p "An existing installation was detected. Reinstall? " -n 1 -r
 		if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 			exit 1
 		fi
@@ -15,7 +15,8 @@ main () {
 
 	printf "\n"
 	test -f "$HOME/.installed" && rm "$HOME/.installed"
-	test -f "installers/${platform}/${platform}.sh" && source "installers/${platform}/${platform}.sh"
+	printf "[+]\tInstalling on %s..\n\n" "${platform}"
+	test -f "installers/platform/${platform}/${platform}.sh" && source "installers/platform/${platform}/${platform}.sh"
 
 	# Make sure we're at the root of our project
 	git_root=$(git rev-parse --show-toplevel)
@@ -23,10 +24,11 @@ main () {
 
 	# Install all of the dotfiles we know of for this platform
 	pushd "${platform}"
-	stow --dotfiles -nvRt "$HOME" *
+	stow --dotfiles -vRt "$HOME" *
 	popd
 
 	touch "$HOME/.installed"
+	printf "\n\n[+]\tDone!\n\n"
 }
 
 main "$@"

@@ -8,7 +8,6 @@ else
 fi
 
 # Install brew packages
-brew update
 echo "ripgrep exa bat jq fd coreutils findutils stow fish curl git tree" | xargs -n1 brew install
 
 # Set fish as our default shell
