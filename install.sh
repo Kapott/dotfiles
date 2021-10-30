@@ -15,7 +15,7 @@ main () {
 
 	printf "\n"
 	test -f "$HOME/.installed" && rm "$HOME/.installed"
-	test -f "installers/${platform}.sh" && source "installers/${platform}.sh"
+	test -f "installers/${platform}/${platform}.sh" && source "installers/${platform}/${platform}.sh"
 
 	# Make sure we're at the root of our project
 	git_root=$(git rev-parse --show-toplevel)

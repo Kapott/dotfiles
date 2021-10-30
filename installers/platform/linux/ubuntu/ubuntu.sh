@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Install packages common to both the Ubuntu desktop and server.
+# Install packages I want on Ubuntu desktop and server.
 apt-get update && apt-get install -y \
 	bat \ # cat alt
 	build-essential \
@@ -13,5 +13,5 @@ apt-get update && apt-get install -y \
 	ripgrep \
 	tmux
 
-type Xorg || source install-ubuntu-server.sh
-type Xorg && source install-ubuntu-desktop.sh
+type Xorg || source server/ubuntu-server.sh
+type Xorg && source desktop/ubuntu-desktop.sh
