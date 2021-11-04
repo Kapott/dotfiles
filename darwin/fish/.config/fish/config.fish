@@ -6,6 +6,11 @@ for file in aliases
 	test -f ~/.config/fish/$file.fish && source ~/.config/fish/$file.fish
 end
 
+# Set vim to be the default system editor.
+set --export --universal EDITOR "vim"
+
+# We use ripgrep by default, and want to show hidden files by default.
+set --export --universal FZF_DEFAULT_COMMAND "rg --hidden --files -g '!.git/'"
 
 fish_ssh_agent
 if status is-interactive
