@@ -6,6 +6,13 @@ for file in aliases
 	test -f ~/.config/fish/$file.fish && source ~/.config/fish/$file.fish
 end
 
+# Add brew path
+if command --query brew
+	fish_add_path /opt/homebrew/sbin
+	fish_add_path /opt/homebrew/bin
+    brew --prefix coreutils >/dev/null; and fish_add_path (brew --prefix coreutils)/libexec/gnubin
+end
+
 # Set vim to be the default system editor.
 set --export --universal EDITOR "vim"
 
