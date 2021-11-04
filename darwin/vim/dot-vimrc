@@ -32,6 +32,7 @@ Plugin 'vimwiki/vimwiki'
 "-- Utility functions / libs / dependencies
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
+Plugin 'dag/vim-fish'
 
 call vundle#end()
 
