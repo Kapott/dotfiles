@@ -18,7 +18,5 @@ sudo chsh -s $(command -v fish) $USER
 fish -c 'curl -sL https://git.io/fisher | source &&
   fisher install jorgebucaran/fisher &&
   fisher install PatrickF1/fzf.fish &&
-  fisher install jethrokuan/z'
-
-# Install fish config files
-
+  fisher install jethrokuan/z &&
+  fisher install jorgebucaran/hydro'
