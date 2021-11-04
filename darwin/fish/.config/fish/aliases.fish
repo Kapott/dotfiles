@@ -2,6 +2,10 @@ alias b brew
 alias g git
 alias v vim
 
+function groot -d 'cd to root of git repo'
+	cd (git rev-parse --show-toplevel)
+end
+
 function l -d 'List files in long format'
 	if command -q exa
 		EXA_COLORS="da=36" exa -l --group-directories-first $argv
