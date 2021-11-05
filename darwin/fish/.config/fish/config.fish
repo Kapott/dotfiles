@@ -20,6 +20,8 @@ set --export --universal EDITOR "vim"
 set --export --universal FZF_DEFAULT_COMMAND "rg --hidden --files -g '!.git/'"
 
 fish_ssh_agent
+fish_vi_key_bindings
+
 if status is-interactive
 	# Commands to run in interactive session can go here
 end
