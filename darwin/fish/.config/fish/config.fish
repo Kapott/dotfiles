@@ -19,6 +19,9 @@ set --export --universal EDITOR "vim"
 # We use ripgrep by default, and want to show hidden files by default.
 set --export --universal FZF_DEFAULT_COMMAND "rg --hidden --files -g '!.git/'"
 
+# No greeting please.
+set -gx fish_greeting ""
+
 fish_ssh_agent
 fish_vi_key_bindings
 
