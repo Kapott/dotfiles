@@ -25,6 +25,7 @@ main () {
 	# Install all of the dotfiles we know of for this platform
 	pushd "${platform}"
 	stow --dotfiles -vRt "$HOME" *
+	stow -vRt "$HOME" fish
 	popd
 
 	touch "$HOME/.installed"
