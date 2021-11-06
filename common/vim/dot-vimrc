@@ -141,6 +141,7 @@ augroup END
 nnoremap <Leader>gc :Git commit %<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gst :Git<CR>
+nnoremap <Leader>gp :Git push<CR>
 
 "--- Plugin: Nerdtree
 map <C-n> :NERDTreeToggle<CR>
