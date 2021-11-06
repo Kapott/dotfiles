@@ -22,14 +22,14 @@ sudo apt-get install -y \
 grep -q "fish" /etc/shells || ( sudo echo $(command -v fish) >> /etc/shells )
 sudo chsh -s $(command -v fish) $USER
 
+# Remove some default files so stow doesn't complain..
+printf "%s\0" .bashrc .config/fish/config.fish .vimrc .vim/bundle | xargs -0 -I{} rm -rf $HOME/{}
+vim +PluginInstall +qall
+
 # Install fish plugins
 fish -c 'curl -sL https://git.io/fisher | source &&
   fisher install jorgebucaran/fisher &&
   fisher install PatrickF1/fzf.fish &&
   fisher install jethrokuan/z &&
   fisher install jorgebucaran/hydro'
-
-# Remove some default files so stow doesn't complain..
-printf "%s\0" .bashrc .config/fish/config.fish .vimrc .vim/bundle| xargs -0 -I{} rm -rf $HOME/{} 
-vim +PluginInstall +qall
 
