@@ -28,6 +28,8 @@ main () {
 	stow -vRt "$HOME" fish
 	popd
 
+	vim +PluginInstall +qall
+
 	touch "$HOME/.installed"
 	printf "\n\n[+]\tDone!\n\n"
 }

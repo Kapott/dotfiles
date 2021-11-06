@@ -1,13 +1,8 @@
 set nocp
 
-"--- Vundle bootstrap & plugin setup
-if !filereadable($HOME . '/.vim/bundle/Vundle.vim/.git/config') && confirm("Clone Vundle?","Y\nn") == 1
-	exec '!git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim/'
-endif
-
 filetype off
 filetype plugin indent off
-set rtp+=~/.vim/bundle/Vundle.vim|
+set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
@@ -40,7 +35,7 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 "syntax enable
-colorscheme gruvbox
+silent! colorscheme gruvbox
 set background=dark
 set backspace=indent,eol,start
 "--- Text wrapping & line length
