@@ -66,6 +66,11 @@ set clipboard=unnamed
 set splitbelow
 set splitright
 
+"--- Tab handling
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+nnoremap <silent> <C-t> :tabnew<CR>
+
 "--- Legibility & usability
 set list listchars=tab:»·,trail:·,eol:¬
 let mapleader = ","
