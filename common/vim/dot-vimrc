@@ -30,9 +30,10 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'dag/vim-fish'
 
 call vundle#end()
-"
+
 "--- Legibility & usability
-set listchars=tab:»·,trail:·,eol:¬
+set showbreak=↪\
+set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨
 let mapleader = ","
 let g:mapleader = ","
 set incsearch
