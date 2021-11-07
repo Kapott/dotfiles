@@ -17,7 +17,7 @@ sudo apt-get install -y \
 	neovim \
 	xclip \
 	xsel
-set -x
+
 # Install vim plugin manager
 if [ ! -f "$HOME/.vim/bundle/Vundle.vim/.git/config" ]; then
 	echo "Vundle not found, cloning..."
