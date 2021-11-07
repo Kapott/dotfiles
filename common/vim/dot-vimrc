@@ -171,6 +171,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let NERDTreeShowHidden=1
 
 "--- Plugin: fzf
+"In the results window:
+" <C-v> open in vsplit
+" <C-x> open in hsplit
+" <C-t> open in tab
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :GFiles<CR>
 
