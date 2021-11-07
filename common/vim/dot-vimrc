@@ -66,6 +66,25 @@ set clipboard=unnamed
 set splitbelow
 set splitright
 
+" Just use Ctrl-hjkl instead..
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Split resizing
+nnoremap <silent> <C-Left> :vertical resize +3<CR>
+nnoremap <silent> <C-Right> :vertical resize -3<CR>
+nnoremap <silent> <C-Up> :resize +3<CR>
+nnoremap <silent> <C-Down> :resize +3<CR>
+
+" Toggle between horizontal and vertial split
+map <Leader>th <C-w>t<C-w>H
+map <Leader>tk <C-w>t<C-w>K
+
+" Remove pipe symbol between splits
+set fillchars+=vert:\ 
+
 "--- Tab handling
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
@@ -129,7 +148,7 @@ endfunction
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 
 " Upon closing these files, auto-remove whitespaces
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Watch my .vimrc (works with all kinds of gui's!) and reload when a change occurs
 augroup myvimrc
