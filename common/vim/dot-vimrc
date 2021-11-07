@@ -165,6 +165,7 @@ nnoremap <Leader>gc :Git commit %<CR>
 nnoremap <Leader>gd :Gdiff<CR>
 nnoremap <Leader>gst :Git<CR>
 nnoremap <Leader>gp :Git push<CR>
+nnoremap <Leader>gb :Git blame<CR>
 
 "--- Plugin: Nerdtree
 map <C-n> :NERDTreeToggle<CR>
