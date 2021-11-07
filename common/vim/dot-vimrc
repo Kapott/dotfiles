@@ -98,13 +98,8 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <C-t> :tabnew<CR>
 
-"--- Legibility & usability
-set list listchars=tab:»·,trail:·,eol:¬
-let mapleader = ","
-let g:mapleader = ","
-set incsearch
-set hlsearch
-set so=1
+" --- Open up a terminal in vim
+map <Leader>tt :vert term<CR>
 
 "-- Dont want to shift to enter command mode
 "nnoremap ; :
