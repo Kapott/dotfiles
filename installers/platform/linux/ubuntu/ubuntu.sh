@@ -12,7 +12,8 @@ sudo apt-get update && sudo apt-get install -y \
  pigz \
  ripgrep \
  tmux \
- stow
+ stow \ 
+ jq
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 echo ${SCRIPT_DIR}/server/ubuntu-server.sh
