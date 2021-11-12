@@ -11,7 +11,8 @@ sudo apt-get update && sudo apt-get install -y \
  git \
  pigz \
  ripgrep \
- tmux
+ tmux \
+ seahorse
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
