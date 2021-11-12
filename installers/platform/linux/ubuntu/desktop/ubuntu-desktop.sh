@@ -20,6 +20,8 @@ sudo apt-get install -y \
 	fonts-font-awesome \
 	fonts-terminus \
 	imagemagick \
+	libsecret-1-0 \
+	libsecret-1-dev \
 	neovim \
 	p7zip-full \
 	rofi \

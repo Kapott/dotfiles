@@ -11,13 +11,20 @@ sudo apt-get install -y \
 	fish \
 	fonts-font-awesome \
 	fonts-terminus \
+	gcc \
 	imagemagick \
+	libsecret-1-0 \
+	libsecret-1-dev \
+	make \
 	p7zip-full \
 	rofi \
 	neovim \
 	ripgrep \
+	seahorse \
 	xclip \
 	xsel
+
+l7t=$(cd /usr/share/doc/git/contrib/credential/libsecret && sudo make)
 
 # Install vim plugin manager
 if [ ! -f "$HOME/.vim/bundle/Vundle.vim/.git/config" ]; then
