@@ -20,9 +20,10 @@ sudo apt-get install -y \
 	fonts-font-awesome \
 	fonts-terminus \
 	imagemagick \
+	neovim \
 	p7zip-full \
 	rofi \
-	neovim \
+	seahorse \
 	xclip \
 	xsel
 
