@@ -22,8 +22,23 @@ main () {
 	git_root=$(git rev-parse --show-toplevel)
 	cd "${git_root}"
 
+	# Change some tokens, depending on the OS we're on.
+	case $platform in
+		"linux")
+			helper="/usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret"
+			;;
+		"darwin")
+			helper="osxkeychain"
+			;;
+		*)
+			helper="store"
+			;;
+	esac	
+
 	# Install all of the dotfiles we know of for this platform
 	pushd "${platform}"
+	sed -E "s|helper = .*|helper = ${helper}|" ../common/git/dot-gitconfig > ../common/git/dot-gitconfig2
+	mv -f ../common/git/dot-gitconfig2 ../common/git/dot-gitconfig
 	stow --dotfiles -vRt "$HOME" * && \
 		stow -vRt "$HOME" fish && \
 		touch "$HOME/.installed" && \
