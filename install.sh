@@ -15,7 +15,7 @@ main () {
 
 	printf "\n"
 	test -f "$HOME/.installed" && rm "$HOME/.installed"
-	printf "[+]\tInstalling on %s..\n\n" "${platform}"
+	printf "[+]\tInstalling on platform: %s..\n\n" "${platform}"
 	test -f "installers/platform/${platform}/${platform}.sh" && source "installers/platform/${platform}/${platform}.sh"
 
 	# Make sure we're at the root of our project
@@ -24,13 +24,13 @@ main () {
 
 	# Install all of the dotfiles we know of for this platform
 	pushd "${platform}"
-	stow --dotfiles -vRt "$HOME" *
-	stow -vRt "$HOME" fish
+	stow --dotfiles -vRt "$HOME" * && \
+		stow -vRt "$HOME" fish && \
+		touch "$HOME/.installed" && \
+		vim +PluginInstall +qall
 	popd
 
-	vim +PluginInstall +qall
 
-	touch "$HOME/.installed"
 	printf "\n\n[+]\tDone!\n\n"
 }
 
