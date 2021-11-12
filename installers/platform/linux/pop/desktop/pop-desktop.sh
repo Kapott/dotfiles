@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-printf "\n[+] Installing ubuntu desktop...\n\n"
+printf "\n[+] Installing pop desktop...\n\n"
 
 # Add repo's for hopelessly outdated stuff
 sudo apt-add-repository -y ppa:fish-shell/release-3
