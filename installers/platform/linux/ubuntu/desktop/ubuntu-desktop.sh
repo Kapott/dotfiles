@@ -4,8 +4,16 @@ printf "\n[+] Installing ubuntu desktop...\n\n"
 
 # Add repo's for hopelessly outdated stuff
 sudo apt-add-repository -y ppa:fish-shell/release-3
-
+ 
 sudo apt-get install -y \
+	stow \
+	bat \
+	build-essential \
+	fd-find \
+	fzf \
+	pigz \
+	ripgrep \
+	tmux \
 	ffmpeg \
 	flameshot \
 	fish \
