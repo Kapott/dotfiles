@@ -2,17 +2,16 @@
 
 # Install packages I want on Pop desktop.
 sudo apt-get update && sudo apt-get install -y \
+ stow \
  bat \
  build-essential \
  curl \
- exa \
  fd-find \
  fzf \
  git \
  pigz \
  ripgrep \
- tmux \
- stow
+ tmux
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
