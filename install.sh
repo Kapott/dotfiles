@@ -18,6 +18,8 @@ main () {
 	printf "[+]\tInstalling on platform: %s..\n\n" "${platform}"
 	test -f "installers/platform/${platform}/${platform}.sh" && source "installers/platform/${platform}/${platform}.sh"
 
+
+
 	# Make sure we're at the root of our project
 	git_root=$(git rev-parse --show-toplevel)
 	cd "${git_root}"
@@ -45,6 +47,12 @@ main () {
 		vim +PluginInstall +qall
 	popd
 
+	# Install fish plugins
+	fish -c 'curl -sL https://git.io/fisher | source &&
+	  fisher install jorgebucaran/fisher &&
+	  fisher install PatrickF1/fzf.fish &&
+	  fisher install jethrokuan/z &&
+	  fisher install jorgebucaran/hydro'
 
 	printf "\n\n[+]\tDone!\n\n"
 }
