@@ -13,6 +13,17 @@ if command --query brew
     brew --prefix coreutils >/dev/null; and fish_add_path (brew --prefix coreutils)/libexec/gnubin
 end
 
+# Base Golang install stuff
+if test -d "/usr/local/go"
+	set -gx __default_go_path "$HOME/Work/go"
+	set -gx GOPATH "$__default_go_path"
+
+	mkdir -p "$__default_go_path"
+
+	fish_add_path /usr/local/go/bin
+	fish_add_path "$GOPATH/bin"
+end
+
 # Set vim to be the default system editor.
 set --export --universal EDITOR "vim"
 
