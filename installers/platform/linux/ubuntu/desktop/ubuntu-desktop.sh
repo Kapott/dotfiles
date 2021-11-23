@@ -29,7 +29,8 @@ sudo apt-get install -y \
 	xclip \
 	xsel \ 
 	flatpak \ 
-	tree
+	tree \
+	rename
 
 # Install vim plugin manager
 if [ ! -f "$HOME/.vim/bundle/Vundle.vim/.git/config" ]; then

@@ -24,7 +24,8 @@ sudo apt-get install -y \
 	xclip \
 	xsel \
 	flatpak \
-	tree
+	tree \
+	rename
 
 l7t=$(cd /usr/share/doc/git/contrib/credential/libsecret && sudo make)
 
