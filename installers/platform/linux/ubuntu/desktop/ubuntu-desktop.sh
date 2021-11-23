@@ -28,7 +28,8 @@ sudo apt-get install -y \
 	seahorse \
 	xclip \
 	xsel \ 
-	flatpak
+	flatpak \ 
+	tree
 
 # Install vim plugin manager
 if [ ! -f "$HOME/.vim/bundle/Vundle.vim/.git/config" ]; then

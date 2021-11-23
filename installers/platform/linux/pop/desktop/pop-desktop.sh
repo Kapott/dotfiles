@@ -23,7 +23,8 @@ sudo apt-get install -y \
 	seahorse \
 	xclip \
 	xsel \
-	flatpak
+	flatpak \
+	tree
 
 l7t=$(cd /usr/share/doc/git/contrib/credential/libsecret && sudo make)
 
