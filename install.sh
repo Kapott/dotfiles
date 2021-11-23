@@ -41,6 +41,7 @@ main () {
 	pushd "${platform}"
 	sed -E "s|helper = .*|helper = ${helper}|" ../common/git/dot-gitconfig > ../common/git/dot-gitconfig2
 	mv -f ../common/git/dot-gitconfig2 ../common/git/dot-gitconfig
+	rm $HOME/.config/fish/config.fish
 	stow --dotfiles -vRt "$HOME" * && \
 		stow -vRt "$HOME" fish && \
 		touch "$HOME/.installed" && \
