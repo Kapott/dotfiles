@@ -22,7 +22,8 @@ sudo apt-get install -y \
 	ripgrep \
 	seahorse \
 	xclip \
-	xsel
+	xsel \
+	flatpak
 
 l7t=$(cd /usr/share/doc/git/contrib/credential/libsecret && sudo make)
 

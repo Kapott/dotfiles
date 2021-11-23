@@ -27,7 +27,8 @@ sudo apt-get install -y \
 	rofi \
 	seahorse \
 	xclip \
-	xsel
+	xsel \ 
+	flatpak
 
 # Install vim plugin manager
 if [ ! -f "$HOME/.vim/bundle/Vundle.vim/.git/config" ]; then
