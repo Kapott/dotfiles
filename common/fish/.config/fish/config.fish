@@ -1,5 +1,6 @@
 # This in our $HOME that we want in the path
 test -d $HOME/bin; and fish_add_path $HOME/bin
+test -d $HOME/.local/bin; and fish_add_path $HOME/.local/bin
 test -d $HOME/go; and fish_add_path $HOME/go
 test -d $HOME/go/bin; and fish_add_path $HOME/go/bin
 
