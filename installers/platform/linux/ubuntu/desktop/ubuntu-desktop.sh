@@ -27,8 +27,8 @@ sudo apt-get install -y \
 	rofi \
 	seahorse \
 	xclip \
-	xsel \ 
-	flatpak \ 
+	xsel \
+	flatpak \
 	tree \
 	rename
 
