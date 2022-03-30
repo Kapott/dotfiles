@@ -5,7 +5,6 @@ sudo apt-get update && sudo apt-get install --ignore-missing -y \
  bat \
  build-essential \
  curl \
- exa \
  fd-find \
  fzf \
  git \
