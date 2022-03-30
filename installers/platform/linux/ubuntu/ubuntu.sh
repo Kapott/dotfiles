@@ -11,7 +11,7 @@ sudo apt-get update && sudo apt-get install --ignore-missing -y \
  pigz \
  ripgrep \
  tmux \
- stow \ 
+ stow \
  jq
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
