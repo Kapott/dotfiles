@@ -38,7 +38,7 @@ if [ ! -f "$HOME/.vim/bundle/Vundle.vim/.git/config" ]; then
 fi
 
 # Set fish as our default shell
-grep -q "fish" /etc/shells || ( sudo echo $(command -v fish) >> /etc/shells )
+grep -q "fish" /etc/shells || sudo echo $(command -v fish) >> /etc/shells
 sudo chsh -s $(command -v fish) $USER
 
 # Remove some default files so stow doesn't complain..
