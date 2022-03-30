@@ -2,7 +2,6 @@
 
 # Install packages I want on Ubuntu desktop and server.
 sudo apt-get update && sudo apt-get install --ignore-missing -y \
- bat \
  build-essential \
  curl \
  fd-find \
