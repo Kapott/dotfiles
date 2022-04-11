@@ -46,7 +46,16 @@ main () {
 	sed -E "s|helper = .*|helper = ${helper}|" ../common/git/dot-gitconfig > ../common/git/dot-gitconfig2
 	mv -f ../common/git/dot-gitconfig2 ../common/git/dot-gitconfig
 
-	# rm $HOME/.config/fish/config.fish
+	# Check if the current fish config file is default-ish, if so remove it to 
+	# prevent gnu stow from vomiting errors and exiting.
+	fish_config_file="$HOME/.config/fish/config.fish"
+	if [ -f "${fish_config_file}" ]; then
+		line_count=$(wc -l "${fish_config_file}" | cut -d ' ' -f1)
+		if [ $line_count -lt 5 ]; then
+			rm "${fish_config_file}"
+		fi
+	fi
+
 
 	# Tell stow to symlink our dotfiles, and change dot-{file|dir} to .{file|dir}
 	# and, if everything is succesful, boot up vim and tell it to install all of
