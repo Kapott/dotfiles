@@ -15,6 +15,7 @@ sudo apt-get install -y \
 	tmux \
 	ffmpeg \
 	flameshot \
+	flatpak \
 	fish \
 	fonts-font-awesome \
 	fonts-terminus \
@@ -42,4 +43,4 @@ grep -q "fish" /etc/shells || sudo echo $(command -v fish) >> /etc/shells
 sudo chsh -s $(command -v fish) $USER
 
 # Remove some default files so stow doesn't complain..
-printf "%s\0" .bashrc .config/fish/config.fish | xargs -0 -I{} rm -rf $HOME/{}
+printf "%s\0" .bashrc | xargs -0 -I{} rm -rf $HOME/{}
