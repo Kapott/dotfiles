@@ -7,7 +7,6 @@ sudo apt-add-repository -y ppa:fish-shell/release-3
  
 sudo apt-get install -y \
 	stow \
-	bat \
 	build-essential \
 	fd-find \
 	fzf \
@@ -27,8 +26,8 @@ sudo apt-get install -y \
 	rofi \
 	seahorse \
 	xclip \
-	xsel \ 
-	flatpak \ 
+	xsel \
+	flatpak \
 	tree \
 	rename
 
@@ -39,7 +38,7 @@ if [ ! -f "$HOME/.vim/bundle/Vundle.vim/.git/config" ]; then
 fi
 
 # Set fish as our default shell
-grep -q "fish" /etc/shells || ( sudo echo $(command -v fish) >> /etc/shells )
+grep -q "fish" /etc/shells || sudo echo $(command -v fish) >> /etc/shells
 sudo chsh -s $(command -v fish) $USER
 
 # Remove some default files so stow doesn't complain..
