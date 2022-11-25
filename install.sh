@@ -46,34 +46,17 @@ main () {
 	sed -E "s|helper = .*|helper = ${helper}|" ../common/git/dot-gitconfig > ../common/git/dot-gitconfig2
 	mv -f ../common/git/dot-gitconfig2 ../common/git/dot-gitconfig
 
-	# Check if the current fish config file is default-ish, if so remove it to 
-	# prevent gnu stow from vomiting errors and exiting.
-	fish_config_file="$HOME/.config/fish/config.fish"
-	if [ -f "${fish_config_file}" ]; then
-		line_count=$(wc -l "${fish_config_file}" | cut -d ' ' -f1)
-		if [ $line_count -lt 5 ]; then
-			rm "${fish_config_file}"
-		fi
-	fi
-
-
 	# Tell stow to symlink our dotfiles, and change dot-{file|dir} to .{file|dir}
 	# and, if everything is succesful, boot up vim and tell it to install all of
 	# our crap.
 	stow --dotfiles -vRt "$HOME" * && \
-		stow -vRt "$HOME" fish && \
 		touch "$HOME/.installed" && \
 		vim +PluginInstall +qall
 
 	# Change back directory to what should have been the git root.
 	popd
-
-	# Install fish plugins
-	fish -c 'curl -sL https://git.io/fisher | source &&
-	  fisher install jorgebucaran/fisher &&
-	  fisher install PatrickF1/fzf.fish &&
-	  fisher install jethrokuan/z &&
-	  fisher install jorgebucaran/hydro'
+	
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 	printf "\n\n[+]\tDone!\n\n"
 }
