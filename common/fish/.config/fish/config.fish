@@ -1,6 +1,16 @@
-test -d ~/bin; and fish_add_path ~/bin
+# This in our $HOME that we want in the path
+test -d $HOME/bin; and fish_add_path $HOME/bin
+test -d $HOME/.local/bin; and fish_add_path $HOME/.local/bin
+test -d $HOME/go; and fish_add_path $HOME/go
+test -d $HOME/go/bin; and fish_add_path $HOME/go/bin
+
+# Things outside of our $HOME we might want in the path
 test -d /usr/local/bin; and fish_add_path /usr/local/bin
 test -d /usr/local/sbin; and fish_add_path /usr/local/sbin
+test -d /usr/games; and fish_add_path /usr/games
+test -d /usr/local/games; and fish_add_path /usr/local/games
+test -d /snap; and fish_add_path /snap/bin
+command --query flatpak; and test -d /var/lib/flatpak/exports/bin; and fish_add_path /var/lib/flatpak/exports/bin
 
 for file in aliases
 	test -f ~/.config/fish/$file.fish && source ~/.config/fish/$file.fish
